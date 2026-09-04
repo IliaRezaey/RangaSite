@@ -1,0 +1,5330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>گالری حرفه‌ای محصولات</title>
+
+  <!-- فونت وزیر -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+
+  <!-- آیکون -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Scroll Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    :root{
+      --orange: #ff7a00;
+      --orange-dark: #e86600;
+      --orange-soft: #fff3e8;
+      --white: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #ececec;
+      --shadow-sm: 0 8px 20px rgba(0,0,0,.05);
+      --shadow-md: 0 15px 35px rgba(255,122,0,.12);
+      --shadow-lg: 0 25px 60px rgba(255,122,0,.18);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --container: 1280px;
+      --transition: all .3s ease;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Vazirmatn', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x:hidden;
+      position: relative;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    button,
+    input{
+      font-family:inherit;
+    }
+
+    .container{
+      width:min(100% - 32px, var(--container));
+      margin-inline:auto;
+    }
+
+    /* progress bar */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      right:0;
+      width:0%;
+      height:4px;
+      background:linear-gradient(90deg, var(--orange), #ff9f43);
+      z-index:9999;
+      box-shadow:0 0 15px rgba(255,122,0,.4);
+    }
+
+    /* animated background */
+    .bg-orb{
+      position:fixed;
+      inset:auto;
+      border-radius:50%;
+      filter: blur(80px);
+      opacity:.15;
+      z-index:-3;
+      animation: floatOrb 11s ease-in-out infinite;
+    }
+
+    .orb-1{
+      width:280px;
+      height:280px;
+      background:#ff7a00;
+      top:80px;
+      right:-60px;
+    }
+
+    .orb-2{
+      width:220px;
+      height:220px;
+      background:#ffb066;
+      bottom:120px;
+      left:-50px;
+      animation-delay:1.4s;
+    }
+
+    .orb-3{
+      width:180px;
+      height:180px;
+      background:#ffd5ab;
+      top:45%;
+      left:25%;
+      animation-delay:2.2s;
+    }
+
+    @keyframes floatOrb{
+      0%,100%{ transform: translateY(0) translateX(0) scale(1); }
+      50%{ transform: translateY(-22px) translateX(10px) scale(1.04); }
+    }
+
+    #particles-js{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    /* header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.72);
+      backdrop-filter: blur(16px);
+      border-bottom:1px solid rgba(0,0,0,.04);
+    }
+
+    .header-inner{
+      min-height:88px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .brand-badge{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--orange), #ff9d3b);
+      color:#fff;
+      box-shadow: var(--shadow-md);
+      font-size:18px;
+    }
+
+    .brand-text h1{
+      font-size:1.1rem;
+      line-height:1.1;
+      font-weight:900;
+    }
+
+    .brand-text span{
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .header-center{
+      flex:1;
+      min-width:280px;
+    }
+
+    .search-box{
+      position:relative;
+      width:100%;
+    }
+
+    .search-box input{
+      width:100%;
+      height:56px;
+      border:none;
+      outline:none;
+      border-radius:999px;
+      padding:0 56px 0 18px;
+      background:#fff;
+      box-shadow: var(--shadow-sm);
+      border:1px solid #f2f2f2;
+      font-size:.98rem;
+      transition:var(--transition);
+    }
+
+    .search-box input:focus{
+      box-shadow:0 0 0 4px rgba(255,122,0,.08), var(--shadow-sm);
+      border-color:#ffd1a5;
+    }
+
+    .search-box i{
+      position:absolute;
+      right:20px;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--orange);
+      font-size:18px;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      height:50px;
+      border:none;
+      border-radius:999px;
+      padding:0 20px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-weight:800;
+      transition:var(--transition);
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--orange), #ff9430);
+      color:#fff;
+      box-shadow:0 14px 28px rgba(255,122,0,.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(255,122,0,.28);
+    }
+
+    .btn-soft{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-soft:hover{
+      border-color:#ffd1a5;
+      color:var(--orange);
+      transform:translateY(-2px);
+    }
+
+    /* hero */
+    .hero{
+      padding:40px 0 26px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      padding:34px;
+      background:
+        linear-gradient(135deg, rgba(255,122,0,.09), rgba(255,255,255,1) 50%, rgba(255,173,92,.10));
+      border:1px solid rgba(255,122,0,.08);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,122,0,.18), transparent 70%);
+      left:-20px;
+      bottom:-30px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.4fr .8fr;
+      gap:20px;
+      align-items:center;
+    }
+
+    .hero h2{
+      font-size:clamp(1.6rem, 2vw, 2.5rem);
+      line-height:1.5;
+      font-weight:950;
+      margin-bottom:10px;
+    }
+
+    .hero h2 .accent{
+      color:var(--orange);
+    }
+
+    .hero p{
+      color:var(--muted);
+      line-height:2;
+      max-width:760px;
+    }
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .stat{
+      background:#fff;
+      border:1px solid #f4f4f4;
+      box-shadow:var(--shadow-sm);
+      border-radius:20px;
+      padding:18px 14px;
+      text-align:center;
+    }
+
+    .stat strong{
+      display:block;
+      color:var(--orange);
+      font-size:1.2rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    /* toolbar */
+    .toolbar{
+      padding:12px 0 26px;
+    }
+
+    .toolbar-wrap{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .results-info{
+      color:var(--muted);
+      font-size:.95rem;
+      font-weight:600;
+    }
+
+    .quick-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .mini-chip{
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--text);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:.88rem;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    /* filter panel */
+    .filter-panel{
+      display:none;
+      margin-top:16px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border:1px solid rgba(0,0,0,.05);
+      border-radius:28px;
+      padding:20px;
+      box-shadow:var(--shadow-md);
+    }
+
+    .filter-panel.active{
+      display:block;
+      animation:fadeDown .3s ease;
+    }
+
+    @keyframes fadeDown{
+      from{opacity:0; transform:translateY(-10px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .filter-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+
+    .filter-head h3{
+      font-size:1rem;
+      font-weight:900;
+    }
+
+    .filter-head p{
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+    .filter-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .filter-tag{
+      border:1px solid #ffd8b2;
+      background:#fff;
+      color:var(--text);
+      border-radius:999px;
+      padding:12px 16px;
+      cursor:pointer;
+      font-weight:700;
+      transition:var(--transition);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+    }
+
+    .filter-tag:hover{
+      transform:translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      color:var(--orange);
+      border-color:#ffc289;
+    }
+
+    .filter-tag.active{
+      background:linear-gradient(135deg, var(--orange), #ff9430);
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 14px 28px rgba(255,122,0,.22);
+    }
+
+    /* gallery */
+    .gallery-section{
+      padding:8px 0 10px;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:22px;
+    }
+
+    .product-card{
+      position:relative;
+      background:rgba(255,255,255,.95);
+      border:1px solid rgba(0,0,0,.04);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow: var(--shadow-sm);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      transform-style:preserve-3d;
+      will-change:transform;
+    }
+
+    .product-card:hover{
+      border-color:rgba(255,122,0,.18);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-media{
+      position:relative;
+      height:220px;
+      overflow:hidden;
+      background:#f7f7f7;
+    }
+
+    .card-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .6s ease;
+    }
+
+    .product-card:hover .card-media img{
+      transform:scale(1.06);
+    }
+
+    .card-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.22), transparent 55%);
+      opacity:.85;
+      pointer-events:none;
+    }
+
+    .card-badges{
+      position:absolute;
+      top:14px;
+      right:14px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      z-index:2;
+    }
+
+    .badge{
+      background:rgba(255,255,255,.92);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.65);
+      backdrop-filter: blur(8px);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:.78rem;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      box-shadow:0 10px 20px rgba(0,0,0,.06);
+    }
+
+    .badge-accent{
+      color:var(--orange);
+    }
+
+    .card-content{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .card-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .card-title-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:0;
+    }
+
+    .card-category{
+      color:var(--orange);
+      font-size:.84rem;
+      font-weight:900;
+    }
+
+    .card-title{
+      font-size:1.06rem;
+      font-weight:950;
+      line-height:1.7;
+    }
+
+    .card-icon{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:var(--orange-soft);
+      color:var(--orange);
+      display:grid;
+      place-items:center;
+      flex-shrink:0;
+    }
+
+    .card-desc{
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.95;
+      min-height:58px;
+    }
+
+    .card-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .meta-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color:#7b7b7b;
+      font-size:.82rem;
+    }
+
+    .meta-item{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      background:#fafafa;
+      border:1px solid #f0f0f0;
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:10px;
+      margin-top:4px;
+    }
+
+    .card-btn{
+      flex:1;
+      border:none;
+      border-radius:16px;
+      height:46px;
+      cursor:pointer;
+      font-weight:900;
+      transition:var(--transition);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .card-btn.primary{
+      background:linear-gradient(135deg, var(--orange), #ff9430);
+      color:#fff;
+      box-shadow:0 10px 20px rgba(255,122,0,.18);
+    }
+
+    .card-btn.primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .card-btn.ghost{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    .card-btn.ghost:hover{
+      color:var(--orange);
+      border-color:#ffc998;
+    }
+
+    /* empty state */
+    .empty-state{
+      display:none;
+      text-align:center;
+      padding:34px 20px 18px;
+    }
+
+    .empty-state.active{
+      display:block;
+    }
+
+    .empty-box{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow-sm);
+      padding:32px 20px;
+    }
+
+    .empty-box i{
+      font-size:40px;
+      color:var(--orange);
+      margin-bottom:12px;
+    }
+
+    .empty-box h3{
+      font-size:1.2rem;
+      margin-bottom:8px;
+    }
+
+    .empty-box p{
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    /* pagination */
+    .pagination{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:34px 0 70px;
+    }
+
+    .page-btn{
+      min-width:46px;
+      height:46px;
+      border:none;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-sm);
+      cursor:pointer;
+      font-weight:900;
+      transition:var(--transition);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      padding:0 14px;
+    }
+
+    .page-btn:hover{
+      color:var(--orange);
+      border-color:#ffc998;
+      transform:translateY(-2px);
+    }
+
+    .page-btn.active{
+      background:linear-gradient(135deg, var(--orange), #ff9430);
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 14px 28px rgba(255,122,0,.2);
+    }
+
+    .page-btn:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    /* lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(10,10,10,.72);
+      backdrop-filter: blur(8px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:3000;
+      padding:22px;
+    }
+
+    .lightbox.active{
+      display:flex;
+      animation:fadeIn .25s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0}
+      to{opacity:1}
+    }
+
+    .lightbox-content{
+      position:relative;
+      width:min(980px, 100%);
+      border-radius:26px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 20px 80px rgba(0,0,0,.25);
+    }
+
+    .lightbox-image{
+      width:100%;
+      max-height:78vh;
+      object-fit:cover;
+      display:block;
+      background:#f4f4f4;
+    }
+
+    .lightbox-close{
+      position:absolute;
+      top:14px;
+      left:14px;
+      width:44px;
+      height:44px;
+      border:none;
+      border-radius:14px;
+      background:rgba(255,255,255,.92);
+      cursor:pointer;
+      font-size:18px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    /* footer */
+    .site-footer{
+      padding:0 0 40px;
+    }
+
+    .footer-box{
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(255,122,0,.06), rgba(255,255,255,1));
+      border:1px solid rgba(255,122,0,.08);
+      padding:24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-box p{
+      color:var(--muted);
+      line-height:1.9;
+    }
+
+    /* responsive */
+    @media (max-width: 1200px){
+      .gallery-grid{
+        grid-template-columns:repeat(3, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 992px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+
+      .hero-stats{
+        grid-template-columns:repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px){
+      .header-inner{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .header-center{
+        width:100%;
+      }
+
+      .header-actions{
+        width:100%;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-card{
+        padding:24px;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .toolbar-wrap,
+      .filter-head,
+      .footer-box{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-stats{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 480px){
+      .container{
+        width:min(100% - 20px, var(--container));
+      }
+
+      .hero{
+        padding-top:22px;
+      }
+
+      .card-actions{
+        flex-direction:column;
+      }
+
+      .search-box input{
+        height:52px;
+      }
+
+      .btn{
+        height:48px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div id="particles-js"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <div class="brand">
+        <div class="brand-badge">
+          <img src="images/ranga logo.png" alt="" style="width: 40px;">
+        </div>
+        <div class="brand-text">
+          <h1>گالری محصولات و نمونه کارهای رنگا</h1>
+          <span> کلیه خدمات چاپ و تبلیغات به خصوص هاردباکس(جعبه سخت)</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="نام محصول، دسته‌بندی یا توضیح محصول را جستجو کن..."
+          />
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- <button class="btn btn-soft" id="homeBtn"> -->
+          <a href="index.html"><button class="btn btn-soft" id="homeBtn">          <i class="fa-solid fa-house"></i>
+ خانه</button></a>
+        <!-- </button> -->
+
+        <button class="btn btn-primary" id="filterToggleBtn">
+          <i class="fa-solid fa-sliders"></i>
+          فیلتر بندی
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card" data-aos="fade-up">
+          <div class="hero-grid">
+            <div>
+                <h2 dir="rtl">تبلیغات <span class="accent" dir="rtl">رنگا</span>، جایی که <span class="accent">رنگ ها</span> حرف می‌زنند!
+</h2>
+              <p dir="rtl">
+
+دقت کنید این گالری تنها بخشی از نمونه کارهای ما میباشد، و دقت شود دسته ها به این معنی نیست که فقط ما این خدمات را انجام میدهیم، بلکه کلیه خدمات چاپی که مد نظر شما باشد را با بهترین کیفیت ممکن انجام خواهیم داد!
+              </p>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <strong id="statProducts">61</strong>
+                <span>محصول نمونه</span>
+              </div>
+              <div class="stat">
+                <strong>5</strong>
+                <span>دسته‌بندی</span>
+              </div>
+              <div class="stat">
+<img src="images/ranga logo.png" alt="" style="width: 90px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-panel" id="filterPanel">
+          <div class="filter-head">
+            <div>
+              <h3>فیلتر دسته‌بندی محصولات</h3>
+              <p>می‌تونی چند دسته را همزمان انتخاب کنی. برای نمایش همه هم روی «نمایش همه» بزن.</p>
+            </div>
+
+            <div class="quick-actions">
+              <button class="btn btn-soft" id="clearFiltersBtn">
+                <i class="fa-solid fa-rotate-left"></i>
+                پاک کردن فیلترها
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-tags" id="filterTags">
+            <button class="filter-tag active" data-filter="all">
+              <i class="fa-solid fa-grid-2"></i>
+              نمایش همه
+            </button>
+
+            <button class="filter-tag" data-filter="کارت ویزیت">
+              <i class="fa-solid fa-id-card"></i>
+              کارت ویزیت
+            </button>
+
+            <button class="filter-tag" data-filter="هارد باکس">
+              <i class="fa-solid fa-box-open"></i>
+              هارد باکس
+            </button>
+
+            <!-- <button class="filter-tag" data-filter="بروشور">
+              <i class="fa-solid fa-file-lines"></i>
+              بروشور
+            </button> -->
+
+            <button class="filter-tag" data-filter="کاتالوگ">
+              <i class="fa-solid fa-book-open"></i>
+              کاتالوگ
+            </button>
+
+            <button class="filter-tag" data-filter="جعبه">
+              <i class="fa-solid fa-box"></i>
+              جعبه
+            </button>
+
+            <!-- <button class="filter-tag" data-filter="ست اداری">
+              <i class="fa-solid fa-briefcase"></i>
+              ست اداری
+            </button>
+
+            <button class="filter-tag" data-filter="لیبل">
+              <i class="fa-solid fa-tag"></i>
+              لیبل
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="container">
+        <div class="toolbar-wrap">
+          <div class="quick-actions">
+            <div class="mini-chip">
+              <i class="fa-solid fa-palette"></i>
+             کیفیت خیره کننده
+            </div>
+            <div class="mini-chip">
+              <i class="fa-solid fa-lightbulb"></i>
+              خلاقیت بی پایان
+            </div>
+            <div class="mini-chip">
+              <i class="fa-solid fa-bolt"></i>
+              سرعت بالا
+            </div>
+          </div>
+          <br>
+                    <div class="results-info" id="resultsInfo">
+            در حال نمایش همه محصولات
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="container">
+
+        <div class="gallery-grid" id="galleryGrid">
+
+ <article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog14.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog14.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<!-- کارت 2 -->
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت ساده مشکی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit3.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit3.jpg" alt="کارت ویزیت ساده مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت ساده مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog16.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog16.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سبز طلاکوب"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit3.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit17.jpg" alt="کارت ویزیت سبز طلاکوب" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سبز طلاکوب</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox4.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox4.jpg" alt="هارد باکس مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سفید نسکافه ای"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit18.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit18.jpg" alt="کارت ویزیت سفید نسکافه ای" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سفید نسکافه ای</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس سرمه ای قفلی خاص"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox24.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox24.jpg" alt="هارد باکس سرمه ای قفلی خاص" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس سرمه ای قفلی خاص</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی دستمال کاغذی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe8.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe8.jpg" alt="جعبه اختصاصی دستمال کاغذی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی دستمال کاغذی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="ساک دستی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/sakdasti.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/sakdasti.jpg" alt="ساک دستی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">ساک دستی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog9.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog9.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog9.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog12.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس بنفش"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox20.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox20.jpg" alt="هارد باکس بنفش" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس بنفش</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس نارنجی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox19.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox19.jpg" alt="هارد باکس نارنجی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس نارنجی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<!-- کارت 4 -->
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog1.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog1.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<!-- <article
+            class="product-card"
+            data-category="بروشور"
+            data-title="بروشور تبلیغاتی مینیمال"
+            data-description="مناسب معرفی خدمات، محصولات و کمپین‌های بازاریابی با طراحی چشم‌نواز."
+            data-image="images/burushur.jpg"
+            data-aos="fade-up"
+            data-aos-delay="120"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/burushur.jpg" alt="بروشور تبلیغاتی مینیمال" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-file-lines"></i>
+                  بروشور
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">بروشور</div>
+                  <h3 class="card-title">بروشور تبلیغاتی مینیمال</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                مناسب معرفی خدمات، محصولات و کمپین‌های بازاریابی با طراحی چشم‌نواز.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    طراحی مینیمال
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    تبلیغاتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article> -->
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس ساده قهوه ای"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox12.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox12.jpg" alt="هارد باکس ساده قهوه ای" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس ساده قهوه ای</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی ادکلن"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe6.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe6.jpg" alt="جعبه اختصاصی ادکلن" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی ادکلن</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس دودی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox13.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox13.jpg" alt="هارد باکس دودی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس دودی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog19.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog19.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="ساک دستی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/sakdasti2.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/sakdasti2.jpg" alt="ساک دستی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">ساک دستی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox6.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox6.jpg" alt="هارد باکس مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی برای ادکلن</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سبز مات و سفید مشکی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit25.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit25.jpg" alt="کارت ویزیت سبز مات و سفید مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سبز مات و سفید مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox7.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox7.jpg" alt="هارد باکس مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog13.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog13.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی ماسک"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe4.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe4.jpg" alt="جعبه اختصاصی ماسک" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی ماسک</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی دونات"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe11.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe11.jpg" alt="جعبه اختصاصی دونات" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی دونات</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe.jpg" alt="جعبه اختصاصی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لاکچری سبز"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox1.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox1.jpg" alt="هارد باکس لاکچری سبز" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لاکچری سبز</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لوکس مشکی طلایی خاص"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox13.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox26.jpg" alt="هارد باکس لوکس مشکی طلایی خاص" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لوکس مشکی طلایی خاص</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سبز سفید"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit19.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit19.jpg" alt="کارت ویزیت سبز سفید" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سبز سفید</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سفید آبی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit29.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit29.jpg" alt="کارت ویزیت سفید آبی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سفید آبی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لاکچری مشکی طلایی مناسب ادکلن"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox14.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox14.jpg" alt="هارد باکس لاکچری مشکی طلایی مناسب ادکلن" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لاکچری مشکی طلایی مناسب ادکلن</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس سبز مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox17.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox17.jpg" alt="هارد باکس سبز مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس سبز مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="ساک دستی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/sakdasti10.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/sakdasti10.jpg" alt="ساک دستی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">ساک دستی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت سفید قرمز"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit21.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit21.jpg" alt="کارت ویزیت سفید قرمز" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت سفید قرمز</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="ساک دستی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/sakdasti20.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/sakdasti20.jpg" alt="ساک دستی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">ساک دستی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog18.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog18.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس زرد مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox3.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox3.jpg" alt="هارد باکس زرد مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس زرد مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت خاص"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit23.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit23.jpg" alt="کارت ویزیت خاص" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت خاص</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<!-- کارت 1 -->
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لاکچری مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox.jpg" alt="هارد باکس لاکچری مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لاکچری مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="ساک دستی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/sakdasti7.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/sakdasti7.jpg" alt="ساک دستی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">ساک دستی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی طلا"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe9.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe9.jpg" alt="جعبه اختصاصی طلا" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی طلا</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس سفید سبز"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox15.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox15.jpg" alt="هارد باکس سفید سبز" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس سفید سبز</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت ساده مشکی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit26.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit26.jpg" alt="کارت ویزیت ساده مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت ساده مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی پنکک"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe7.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe7.jpg" alt="جعبه اختصاصی پنکک" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی پنکک</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس سفید سرمه ای"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox11.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox11.jpg" alt="هارد باکس سفید سرمه ای" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس سفید سرمه ای</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لاکچری مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox9.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox9.jpg" alt="هارد باکس لاکچری مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لاکچری مشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت قهوه ای سفید"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit22.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit22.jpg" alt="کارت ویزیت قهوه ای سفید" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت قهوه ای سفید</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی بژ"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox21.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox21.jpg" alt="هارد باکس مشکی بژ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی بژ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت زرشکی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit3.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit16.jpg" alt="کارت ویزیت زرشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت زرشکی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<!-- کارت 5 -->
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی ماسک"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jabe.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jabe.jpg" alt="جعبه اختصاصی ماسک" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی ماسک</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe2.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe2.jpg" alt="جعبه اختصاصی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کاتالوگ"
+            data-title="کاتالوگ"
+            data-description="ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک."
+            data-image="images/katalog15.jpg"
+            data-aos="fade-up"
+            data-aos-delay="180"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/katalog15.jpg" alt="کاتالوگ" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-book-open"></i>
+                  کاتالوگ
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کاتالوگ</div>
+                  <h3 class="card-title">کاتالوگ</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                ارائه کامل محصولات و خدمات در قالبی مرتب، خوانا و بسیار شیک.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-book"></i>
+                    چندصفحه‌ای
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-building"></i>
+                    شرکتی
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس قهوه ای سوخته"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox23.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox23.jpg" alt="هارد باکس قهوه ای سوخته" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس قهوه ای سوخته</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="جعبه"
+            data-title="جعبه اختصاصی دستمال کاغذی"
+            data-description="جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری."
+            data-image="images/jaebe10.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/jaebe10.jpg" alt="جعبه اختصاصی دستمال کاغذی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge">
+                  <i class="fa-solid fa-box"></i>
+                  جعبه
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">جعبه</div>
+                  <h3 class="card-title">جعبه اختصاصی دستمال کاغذی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                جعبه مقاوم و جذاب برای ارائه حرفه‌ای‌تر محصول به مشتری.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-cube"></i>
+                    سفارشی
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-palette"></i>
+                    جذاب
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox25.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox25.jpg" alt="هارد باکس مشکی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی خاص</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس لاکچری سفید طلایی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox10.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox10.jpg" alt="هارد باکس لاکچری سفید طلایی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس لاکچری سفید طلایی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس شیری چوبی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox5.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox5.jpg" alt="هارد باکس شیری چوبی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس شیری چوبی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس شیری نارنجی"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox8.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox8.jpg" alt="هارد باکس شیری نارنجی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس شیری نارنجی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="کارت ویزیت"
+            data-title="کارت ویزیت ساده دودی"
+            data-description="چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس."
+            data-image="images/cartvisit4.jpg"
+            data-aos="fade-up"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/cartvisit4.jpg" alt="کارت ویزیت ساده دودی" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-crown"></i>
+                  ویژه
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-id-card"></i>
+                  کارت ویزیت
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">کارت ویزیت</div>
+                  <h3 class="card-title">کارت ویزیت ساده دودی</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                چاپ برجسته، لمینت مات و طراحی حرفه‌ای برای برندهای خاص و لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-print"></i>
+                    چاپ خاص
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-star"></i>
+                    پریمیوم
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس مشکی و شیری طلاکوب"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox22.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox22.jpg" alt="هارد باکس مشکی و شیری طلاکوب" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس مشکی و شیری طلاکوب</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+
+<article
+            class="product-card"
+            data-category="هارد باکس"
+            data-title="هارد باکس ساده سبز"
+            data-description="بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس."
+            data-image="images/hardbox27.jpg"
+            data-aos="fade-up"
+            data-aos-delay="60"
+          >
+            <div class="card-media">
+              <img loading="lazy" src="images/hardbox27.jpg" alt="هارد باکس ساده سبز" />
+              <div class="card-overlay"></div>
+              <div class="card-badges">
+                <span class="badge badge-accent">
+                  <i class="fa-solid fa-gem"></i>
+                  لوکس
+                </span>
+                <span class="badge">
+                  <i class="fa-solid fa-box-open"></i>
+                  هارد باکس
+                </span>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <div class="card-top">
+                <div class="card-title-wrap">
+                  <div class="card-category">هارد باکس</div>
+                  <h3 class="card-title">هارد باکس ساده سبز</h3>
+                </div>
+                <div class="card-icon">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+              </div>
+
+              <p class="card-desc">
+                بسته‌بندی مقاوم و شیک برای محصولات ارزشمند، هدایا و ست‌های لوکس.
+              </p>
+
+              <div class="card-meta">
+                <div class="meta-list">
+                  <span class="meta-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    مقاوم
+                  </span>
+                  <span class="meta-item">
+                    <i class="fa-solid fa-box"></i>
+                    بسته‌بندی خاص
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="card-btn primary preview-btn">
+                  <i class="fa-solid fa-image"></i>
+                  مشاهده تصویر
+                </button>
+                <button class="card-btn ghost">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  جزئیات
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h3>محصولی پیدا نشد</h3>
+            <p>
+              کاربر عزیز رنگا، با این جستجو یا فیلتر چیزی پیدا نشد.  
+              یا عبارت را تغییر بده، یا فیلترها را پاک کن.  
+            </p>
+          </div>
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </section>
+
+    <section class="site-footer">
+      <div class="container">
+        <div class="footer-box">
+          <div>
+            <h3 style="font-size:1.05rem; margin-bottom:8px;">گالری محصولات</h3>
+            <p>
+تمامی محصولات و نمونه کارهایی که در بالا مشاهده می فرمایید، برای شما نیز توسط تیم رنگا با بهترین کیفیت و با به صرفه ترین هزینه قیمت ساخته می شوند
+            </p>
+          </div>
+
+          <button class="btn btn-primary" id="scrollTopBtn">
+            <i class="fa-solid fa-arrow-up"></i>
+            بازگشت به بالا
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img class="lightbox-image" id="lightboxImage" src="" alt="preview" />
+    </div>
+  </div>
+<center>
+    <img src="images/ranga logo.png" alt="" style="width: 140px;">
+</center>
+  <!-- scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 850,
+      once: true,
+      offset: 60
+    });
+
+    // particles
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 42, density: { enable: true, value_area: 900 } },
+        color: { value: "#ff7a00" },
+        shape: { type: "circle" },
+        opacity: { value: 0.16, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 140,
+          color: "#ffb066",
+          opacity: 0.18,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.6,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: false },
+          onclick: { enable: false },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+
+    const searchInput = document.getElementById("searchInput");
+    const filterToggleBtn = document.getElementById("filterToggleBtn");
+    const filterPanel = document.getElementById("filterPanel");
+    const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+    const galleryGrid = document.getElementById("galleryGrid");
+    const allCards = Array.from(document.querySelectorAll(".product-card"));
+    const resultsInfo = document.getElementById("resultsInfo");
+    const emptyState = document.getElementById("emptyState");
+    const pagination = document.getElementById("pagination");
+    const statProducts = document.getElementById("statProducts");
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    const scrollProgress = document.getElementById("scrollProgress");
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    const homeBtn = document.getElementById("homeBtn");
+
+    const cardsPerPage = 4;
+    let currentPage = 1;
+    let selectedFilters = [];
+    let searchTerm = "";
+
+    statProducts.textContent = allCards.length;
+
+    filterToggleBtn.addEventListener("click", () => {
+      filterPanel.classList.toggle("active");
+    });
+
+    clearFiltersBtn.addEventListener("click", () => {
+      selectedFilters = [];
+      currentPage = 1;
+      updateFilterButtons();
+      applyFilters();
+    });
+
+    searchInput.addEventListener("input", (e) => {
+      searchTerm = e.target.value.trim().toLowerCase();
+      currentPage = 1;
+      applyFilters();
+    });
+
+    homeBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.querySelectorAll(".filter-tag").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+
+        if (filter === "all") {
+          selectedFilters = [];
+        } else {
+          const exists = selectedFilters.includes(filter);
+          if (exists) {
+            selectedFilters = selectedFilters.filter(item => item !== filter);
+          } else {
+            selectedFilters.push(filter);
+          }
+        }
+
+        currentPage = 1;
+        updateFilterButtons();
+        applyFilters();
+      });
+    });
+
+    function updateFilterButtons() {
+      const filterButtons = document.querySelectorAll(".filter-tag");
+      filterButtons.forEach(btn => {
+        const filter = btn.dataset.filter;
+        if (filter === "all") {
+          btn.classList.toggle("active", selectedFilters.length === 0);
+        } else {
+          btn.classList.toggle("active", selectedFilters.includes(filter));
+        }
+      });
+    }
+
+    function getFilteredCards() {
+      return allCards.filter(card => {
+        const category = card.dataset.category.toLowerCase();
+        const title = card.dataset.title.toLowerCase();
+        const description = card.dataset.description.toLowerCase();
+
+        const matchesSearch =
+          !searchTerm ||
+          title.includes(searchTerm) ||
+          category.includes(searchTerm) ||
+          description.includes(searchTerm);
+
+        const matchesFilter =
+          selectedFilters.length === 0 ||
+          selectedFilters.includes(card.dataset.category);
+
+        return matchesSearch && matchesFilter;
+      });
+    }
+
+    function applyFilters() {
+      const filteredCards = getFilteredCards();
+      const totalPages = Math.max(1, Math.ceil(filteredCards.length / cardsPerPage));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      allCards.forEach(card => {
+        card.style.display = "none";
+      });
+
+      const start = (currentPage - 1) * cardsPerPage;
+      const end = start + cardsPerPage;
+      const cardsToShow = filteredCards.slice(start, end);
+
+      cardsToShow.forEach(card => {
+        card.style.display = "block";
+      });
+
+      updateResultsInfo(filteredCards.length);
+      renderPagination(totalPages);
+      emptyState.classList.toggle("active", filteredCards.length === 0);
+      pagination.style.display = filteredCards.length === 0 ? "none" : "flex";
+    }
+
+    function updateResultsInfo(count) {
+      const filterText = selectedFilters.length
+        ? `دسته‌های انتخاب‌شده: ${selectedFilters.join("، ")}`
+        : "همه دسته‌بندی‌ها";
+
+      const searchText = searchTerm
+        ? ` | جستجو: "${searchTerm}"`
+        : "";
+
+      resultsInfo.textContent = `${count} محصول پیدا شد | ${filterText}${searchText}`;
+    }
+
+    function renderPagination(totalPages) {
+      pagination.innerHTML = "";
+
+      const prevBtn = document.createElement("button");
+      prevBtn.className = "page-btn";
+      prevBtn.innerHTML = '<i class="fa-solid fa-angle-right"></i>';
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          applyFilters();
+          scrollToGallery();
+        }
+      });
+      pagination.appendChild(prevBtn);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.className = "page-btn" + (i === currentPage ? " active" : "");
+        btn.textContent = i;
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          applyFilters();
+          scrollToGallery();
+        });
+        pagination.appendChild(btn);
+      }
+
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "page-btn";
+      nextBtn.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          applyFilters();
+          scrollToGallery();
+        }
+      });
+      pagination.appendChild(nextBtn);
+    }
+
+    function scrollToGallery() {
+      galleryGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // lightbox
+    document.querySelectorAll(".preview-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const card = e.currentTarget.closest(".product-card");
+        const img = card.dataset.image;
+        const title = card.dataset.title;
+
+        lightboxImage.src = img;
+        lightboxImage.alt = title;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+
+    // scroll progress
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = progress + "%";
+    });
+
+    // 3D tilt hover
+    allCards.forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        if (window.innerWidth < 992) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * 5;
+        const rotateY = ((centerX - x) / centerX) * 7;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    });
+
+    // init
+    applyFilters();
+
+    // اگر بیرون پنل فیلتر کلیک شد، بسته شود
+    document.addEventListener("click", (e) => {
+      const clickedInsidePanel = filterPanel.contains(e.target);
+      const clickedToggle = filterToggleBtn.contains(e.target);
+
+      if (!clickedInsidePanel && !clickedToggle) {
+        filterPanel.classList.remove("active");
+      }
+    });
+
+    
+  </script>
+</body>
+</html>

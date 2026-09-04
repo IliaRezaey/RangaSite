@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاکتور رسمی | چاپ و تبلیغات رنگا</title>
+    <!-- فونت وزیر -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazir-font@latest/dist/font-face.css">
+    <!-- کتابخانه‌ها -->
+    <script src="https://unpkg.com/jalaali-js/dist/jalaali.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazir', Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            .right-panel {
+                position: static;
+                margin-top: 20px;
+            }
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: #4f46e5;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #e0e0e0;
+            padding-bottom: 6px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+        }
+
+        @media (max-width: 500px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        input, textarea {
+            padding: 11px 13px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border 0.3s, box-shadow 0.3s;
+            background: #f9fafb;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+            background: white;
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .three-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .two-cols, .three-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(79,70,229,0.4);
+            white-space: nowrap;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background: #4338ca;
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px rgba(79,70,229,0.6);
+        }
+
+        .btn-outline {
+            background: white;
+            color: #4f46e5;
+            border: 2px solid #4f46e5;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #f0f0ff;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            box-shadow: 0 4px 12px rgba(239,68,68,0.4);
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: #10b981;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.4);
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: #f3f4f6;
+            color: #374151;
+            font-weight: 700;
+            padding: 10px 6px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td input {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            padding: 7px 9px;
+            border-radius: 8px;
+            background: white;
+            text-align: center;
+        }
+
+        td input.desc {
+            text-align: right;
+        }
+
+        .item-total {
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .summary {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border-radius: 10px;
+        }
+
+        .summary-row.total {
+            background: #4f46e5;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .right-panel {
+            position: sticky;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .right-panel {
+                position: static;
+            }
+        }
+
+        .preview-box {
+            background: white;
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .invoice-preview {
+            width: 100%;
+            max-width: 794px;
+            background: white;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #1f2937;
+            min-height: 800px;
+            transition: all 0.3s;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #4f46e5;
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border: 1px dashed #ccc;
+            border-radius: 12px;
+            padding: 4px;
+            background: #f9fafb;
+        }
+
+        .company-info h2 {
+            font-size: 1.8rem;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .company-info p, .company-details p {
+            margin: 3px 0;
+            font-size: 0.8rem;
+            color: #4b5563;
+        }
+
+        .invoice-title {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .invoice-title h1 {
+            font-size: 2.2rem;
+            color: #4f46e5;
+            letter-spacing: 2px;
+        }
+
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .customer-details, .date-details {
+            width: 48%;
+        }
+
+        @media (max-width: 600px) {
+            .customer-details, .date-details {
+                width: 100%;
+            }
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px dashed #ccc;
+            margin: 20px 0;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+
+        .items-table th {
+            background: #4f46e5;
+            color: white;
+            padding: 8px 5px;
+            text-align: center;
+        }
+
+        .items-table td, .items-table th {
+            border: 1px solid #d1d5db;
+            padding: 7px 5px;
+            text-align: center;
+        }
+
+        .items-table td:nth-child(2) {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .invoice-summary {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .totals {
+            width: 55%;
+            border-collapse: collapse;
+        }
+
+        .totals td {
+            padding: 6px 10px;
+            border: none;
+            text-align: right;
+        }
+
+        .totals td:last-child {
+            font-weight: bold;
+            text-align: left;
+            min-width: 120px;
+        }
+
+        .totals .final-row td {
+            background: #4f46e5;
+            color: white;
+            font-size: 1.05rem;
+            border-radius: 5px;
+        }
+
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 12px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        /* استایل مخصوص پرینت و دانلود */
+        .print-version {
+            position: fixed;
+            top: -9999px;
+            left: -9999px;
+            width: 794px; /* عرض A4 به پیکسل */
+            background: white;
+            padding: 30px;
+            font-family: 'Vazir', Tahoma, Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            box-sizing: border-box;
+            z-index: 9999;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                grid-template-columns: 1fr;
+                box-shadow: none;
+                padding: 0;
+                background: white;
+            }
+            .left-panel, .btn-group, .preview-box > *:not(.invoice-preview) {
+                display: none;
+            }
+            .invoice-preview {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 0;
+                min-height: auto;
+                font-size: 11pt;
+            }
+        }
+
+        .section .form-group.full-width {
+            grid-column: span 2;
+        }
+        @media (max-width: 500px) {
+            .section .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- بخش ورودی‌ها -->
+        <div class="left-panel">
+            <!-- اطلاعات شرکت -->
+            <div class="section">
+                <h3>🏢 اطلاعات شرکت</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>نام شرکت</label>
+                        <input type="text" id="companyName" value="چاپ و تبلیغات رنگا">
+                    </div>
+                    <div class="form-group">
+                        <label>شماره اقتصادی</label>
+                        <input type="text" id="economicCode" value="۴۱۲۳۵۶۷۸۹۰">
+                    </div>
+                    <div class="form-group">
+                        <label>کد پستی</label>
+                        <input type="text" id="postalCode" value="۱۵۸۷۶۵۴۳۲۱">
+                    </div>
+                    <div class="form-group">
+                        <label>تلفن</label>
+                        <input type="tel" id="companyPhone" value="۰۹۹۲۱۰۰۹۷۵۷">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>آدرس دفتر</label>
+                        <input type="text" id="officeAddress" value="خیابان جمهوری، خیابان ملت، برج تجاری اداری بهارستان">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>آدرس کارگاه</label>
+                        <input type="text" id="workshopAddress" value="زیر پل ری، خیابان ادیب الممالک، گاراژ نارون، پلاک ۹ ">
+                    </div>
+                </div>
+            </div>
+
+            <!-- اطلاعات مشتری -->
+            <div class="section">
+                <h3>👤 اطلاعات مشتری</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>نام و نام خانوادگی</label>
+                        <input type="text" id="customerName" placeholder="مثال: محسن طالبی">
+                    </div>
+                    <div class="form-group">
+                        <label>شماره تماس</label>
+                        <input type="tel" id="customerPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>آدرس (اختیاری)</label>
+                        <input type="text" id="customerAddress" placeholder="آدرس کامل مشتری">
+                    </div>
+                </div>
+            </div>
+
+            <!-- تاریخ و شماره فاکتور -->
+            <div class="section">
+                <h3>📅 تاریخ و شماره فاکتور</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>تاریخ هجری شمسی</label>
+                        <input type="text" id="jalaliDate" placeholder="۱۴۰۵/۰۳/۰۴">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>شماره فاکتور</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="invoiceNumber" value="" style="flex:1;">
+                            <button class="btn" type="button" onclick="generateInvoiceNumber()">ساخت خودکار</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تنظیمات مالی -->
+            <div class="section">
+                <h3>⚙️ تنظیمات مالی</h3>
+                <div class="three-cols">
+                    <div class="form-group">
+                        <label>درصد مالیات</label>
+                        <input type="number" id="taxPercent" value="9" min="0" max="100" step="any">
+                    </div>
+                </div>
+            </div>
+
+            <!-- جدول آیتم‌ها -->
+            <div class="section">
+                <h3>🛒 اقلام فاکتور</h3>
+                <div class="table-wrapper">
+                    <table id="itemsTable">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>شرح</th>
+                                <th>تعداد</th>
+                                <th>قیمت واحد (ریال)</th>
+                                <th>تخفیف (ریال)</th>
+                                <th>جمع</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsBody"></tbody>
+                    </table>
+                </div>
+                <button class="btn btn-outline" type="button" onclick="addRow()" style="margin-top:10px;">➕ افزودن کالا</button>
+                <div class="summary">
+                    <div class="summary-row">
+                        <span>جمع کل:</span>
+                        <span id="subtotal">۰</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>تخفیف کل:</span>
+                        <span id="totalDiscount">۰</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>مالیات (<span id="taxDisplayPercent">9</span>%):</span>
+                        <span id="taxAmount">۰</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>مبلغ قابل پرداخت:</span>
+                        <span id="finalAmount">۰</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- پیش‌نمایش و دکمه‌ها -->
+        <div class="right-panel">
+            <div class="preview-box">
+                <h3 style="text-align:center; margin-bottom:10px;">📄 پیش‌نمایش فاکتور</h3>
+                <div id="invoicePreview" class="invoice-preview"></div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="downloadInvoicePDF()">📑 دانلود PDF</button>
+                    <button class="btn" onclick="downloadInvoiceImage()">🖼️ دانلود عکس</button>
+                    <button class="btn btn-outline" onclick="window.print()">🖨️ پرینت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نسخه مخفی برای دانلود -->
+    <div id="printVersion" class="print-version"></div>
+
+    <script>
+        // مقداردهی اولیه تاریخ
+        const today = new Date();
+        const jalaliToday = jalaali.toJalaali(today);
+        document.getElementById('gregorianDate').valueAsDate = today;
+        document.getElementById('jalaliDate').value = `${jalaliToday.jy}/${String(jalaliToday.jm).padStart(2,'0')}/${String(jalaliToday.jd).padStart(2,'0')}`;
+        generateInvoiceNumber();
+
+        // همگام‌سازی تاریخ‌ها
+        document.getElementById('gregorianDate').addEventListener('change', function(e) {
+            const gDate = e.target.valueAsDate;
+            if (gDate) {
+                const jDate = jalaali.toJalaali(gDate);
+                document.getElementById('jalaliDate').value = 
+                    `${jDate.jy}/${String(jDate.jm).padStart(2,'0')}/${String(jDate.jd).padStart(2,'0')}`;
+                updatePreview();
+                updatePrintVersion();
+            }
+        });
+
+        document.getElementById('jalaliDate').addEventListener('change', function(e) {
+            const parts = e.target.value.split(/[/\s-]/);
+            if (parts.length === 3) {
+                const jy = parseInt(parts[0]), jm = parseInt(parts[1]), jd = parseInt(parts[2]);
+                if (!isNaN(jy) && !isNaN(jm) && !isNaN(jd)) {
+                    const gDate = jalaali.toGregorian(jy, jm, jd);
+                    const gDateObj = new Date(gDate.gy, gDate.gm-1, gDate.gd);
+                    document.getElementById('gregorianDate').valueAsDate = gDateObj;
+                    updatePreview();
+                    updatePrintVersion();
+                }
+            }
+        });
+
+        function generateInvoiceNumber() {
+            const jNow = jalaali.toJalaali(new Date());
+            const datePart = `${jNow.jy}${String(jNow.jm).padStart(2,'0')}${String(jNow.jd).padStart(2,'0')}`;
+            const random = Math.floor(Math.random()*1000).toString().padStart(3,'0');
+            document.getElementById('invoiceNumber').value = `RANGA-${datePart}-${random}`;
+            updatePreview();
+            updatePrintVersion();
+        }
+
+        // مدیریت جدول
+        let rowCounter = 1;
+        function addRow() {
+            const tbody = document.getElementById('itemsBody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${rowCounter}</td>
+                <td><input type="text" placeholder="شرح کالا/خدمت" class="desc" oninput="updatePreview(); updatePrintVersion()"></td>
+                <td><input type="number" value="1" min="0" step="any" class="qty" oninput="updateCalculations(); updatePreview(); updatePrintVersion()"></td>
+                <td><input type="number" value="0" min="0" step="any" class="price" oninput="updateCalculations(); updatePreview(); updatePrintVersion()"></td>
+                <td><input type="number" value="0" min="0" step="any" class="discount" oninput="updateCalculations(); updatePreview(); updatePrintVersion()"></td>
+                <td class="item-total">0</td>
+                <td><button class="btn btn-danger" style="padding:4px 8px;" type="button" onclick="removeRow(this); updateCalculations(); updatePreview(); updatePrintVersion()">🗑️</button></td>
+            `;
+            tbody.appendChild(row);
+            rowCounter++;
+            updateCalculations();
+            updatePreview();
+            updatePrintVersion();
+        }
+
+        function removeRow(btn) {
+            btn.closest('tr').remove();
+            Array.from(document.getElementById('itemsBody').children).forEach((row, idx) => {
+                row.children[0].textContent = idx + 1;
+            });
+            rowCounter = document.getElementById('itemsBody').children.length + 1;
+            updateCalculations();
+            updatePreview();
+            updatePrintVersion();
+        }
+
+        function updateCalculations() {
+            const rows = document.querySelectorAll('#itemsBody tr');
+            let subtotal = 0, totalDiscount = 0;
+            rows.forEach(row => {
+                const qty = parseFloat(row.querySelector('.qty').value) || 0;
+                const price = parseFloat(row.querySelector('.price').value) || 0;
+                const discount = parseFloat(row.querySelector('.discount').value) || 0;
+                const itemTotal = (qty * price) - discount;
+                row.querySelector('.item-total').textContent = itemTotal.toLocaleString('fa-IR');
+                subtotal += itemTotal;
+                totalDiscount += discount;
+            });
+
+            const taxPercent = parseFloat(document.getElementById('taxPercent').value) || 0;
+            const dutiesPercent = parseFloat(document.getElementById('dutiesPercent').value) || 0;
+            const tax = subtotal * (taxPercent / 100);
+            const duties = subtotal * (dutiesPercent / 100);
+            const final = subtotal + tax + duties;
+
+            document.getElementById('subtotal').textContent = subtotal.toLocaleString('fa-IR') + ' ریال';
+            document.getElementById('totalDiscount').textContent = totalDiscount.toLocaleString('fa-IR') + ' ریال';
+            document.getElementById('taxAmount').textContent = tax.toLocaleString('fa-IR') + ' ریال';
+            document.getElementById('dutiesAmount').textContent = duties.toLocaleString('fa-IR') + ' ریال';
+            document.getElementById('finalAmount').textContent = final.toLocaleString('fa-IR') + ' ریال';
+            document.getElementById('taxDisplayPercent').textContent = taxPercent;
+            document.getElementById('dutiesDisplayPercent').textContent = dutiesPercent;
+        }
+
+        function updatePreview() {
+            const invoiceNum = document.getElementById('invoiceNumber').value || '-';
+            const companyName = document.getElementById('companyName').value || '...';
+            const economic = document.getElementById('economicCode').value || '-';
+            const postal = document.getElementById('postalCode').value || '-';
+            const phone = document.getElementById('companyPhone').value || '-';
+            const officeAddr = document.getElementById('officeAddress').value || '-';
+            const workshopAddr = document.getElementById('workshopAddress').value || '-';
+            const custName = document.getElementById('customerName').value || 'مشخص نشده';
+            const custPhone = document.getElementById('customerPhone').value || '-';
+            const custAddr = document.getElementById('customerAddress').value || '-';
+            const gregDate = document.getElementById('gregorianDate').value || '';
+            const jalaliDate = document.getElementById('jalaliDate').value || '';
+            const taxPercent = document.getElementById('taxPercent').value || '9';
+            const dutiesPercent = document.getElementById('dutiesPercent').value || '1';
+            const extraNote = document.getElementById('extraNote').value || '';
+
+            let itemsHTML = '';
+            const rows = document.querySelectorAll('#itemsBody tr');
+            if (rows.length === 0) {
+                itemsHTML = `<tr><td colspan="6" style="text-align:center;">هیچ کالایی ثبت نشده</td></tr>`;
+            } else {
+                rows.forEach(row => {
+                    const desc = row.querySelector('.desc')?.value || '---';
+                    const qty = parseFloat(row.querySelector('.qty')?.value) || 0;
+                    const price = parseFloat(row.querySelector('.price')?.value) || 0;
+                    const discount = parseFloat(row.querySelector('.discount')?.value) || 0;
+                    const itemTotal = (qty * price) - discount;
+                    itemsHTML += `
+                        <tr>
+                            <td>${row.children[0].textContent}</td>
+                            <td>${desc}</td>
+                            <td>${qty}</td>
+                            <td>${price.toLocaleString('fa-IR')}</td>
+                            <td>${discount.toLocaleString('fa-IR')}</td>
+                            <td>${itemTotal.toLocaleString('fa-IR')}</td>
+                        </tr>`;
+                });
+            }
+
+            const subtotalText = document.getElementById('subtotal').textContent.split(' ')[0] || '0';
+            const totalDiscountText = document.getElementById('totalDiscount').textContent.split(' ')[0] || '0';
+            const taxText = document.getElementById('taxAmount').textContent.split(' ')[0] || '0';
+            const dutiesText = document.getElementById('dutiesAmount').textContent.split(' ')[0] || '0';
+            const finalText = document.getElementById('finalAmount').textContent.split(' ')[0] || '0';
+
+            const previewDiv = document.getElementById('invoicePreview');
+            previewDiv.innerHTML = `
+                <div class="invoice-header">
+                    <img src="images/ranga logo.png" alt="لوگو" class="company-logo" id="logoImg" 
+                         onerror="this.style.display='none'" 
+                         style="display: block;">
+                    <div class="company-info" style="flex:1; margin-right: 15px;">
+                        <h2>${companyName}</h2>
+                        <p>شماره اقتصادی: ${economic} | کد پستی: ${postal}</p>
+                        <p>تلفن: ${phone}</p>
+                        <p>آدرس دفتر: ${officeAddr}</p>
+                        <p>آدرس کارگاه: ${workshopAddr}</p>
+                    </div>
+                    <div class="invoice-title">
+                        <h1>فاکتور</h1>
+                        <p>شماره: ${invoiceNum}</p>
+                    </div>
+                </div>
+                <div class="invoice-details">
+                    <div class="customer-details">
+                        <h4>مشتری:</h4>
+                        <p><strong>نام:</strong> ${custName}</p>
+                        <p><strong>تلفن:</strong> ${custPhone}</p>
+                        <p><strong>آدرس:</strong> ${custAddr}</p>
+                    </div>
+                    <div class="date-details">
+                        <p><strong>تاریخ هجری شمسی:</strong> ${jalaliDate}</p>
+                    </div>
+                </div>
+                <hr>
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>شرح</th>
+                            <th>تعداد</th>
+                            <th>قیمت واحد (ریال)</th>
+                            <th>تخفیف (ریال)</th>
+                            <th>مبلغ کل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${itemsHTML}
+                    </tbody>
+                </table>
+                <div class="invoice-summary">
+                    <table class="totals">
+                        <tr><td>جمع کل:</td><td>${subtotalText} ریال</td></tr>
+                        <tr><td>تخفیف کل:</td><td>${totalDiscountText} ریال</td></tr>
+                        <tr><td>مالیات (${taxPercent}٪):</td><td>${taxText} ریال</td></tr>
+                        <tr class="final-row"><td>قابل پرداخت:</td><td>${finalText} ریال</td></tr>
+                    </table>
+                </div>
+                <img src="images/mohr o emza.jpeg" alt="" style="width: 300px;">
+                <div class="footer">
+                    <p>با تشکر از اعتماد شما | چاپ و تبلیغات رنگا</p>
+                </div>
+            `;
+
+            const logoImg = document.getElementById('logoImg');
+            if (logoImg && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+            }
+        }
+
+        // نسخه مخصوص پرینت و دانلود
+        function updatePrintVersion() {
+            const invoiceNum = document.getElementById('invoiceNumber').value || '-';
+            const companyName = document.getElementById('companyName').value || '...';
+            const economic = document.getElementById('economicCode').value || '-';
+            const postal = document.getElementById('postalCode').value || '-';
+            const phone = document.getElementById('companyPhone').value || '-';
+            const officeAddr = document.getElementById('officeAddress').value || '-';
+            const workshopAddr = document.getElementById('workshopAddress').value || '-';
+            const custName = document.getElementById('customerName').value || 'مشخص نشده';
+            const custPhone = document.getElementById('customerPhone').value || '-';
+            const custAddr = document.getElementById('customerAddress').value || '-';
+            const gregDate = document.getElementById('gregorianDate').value || '';
+            const jalaliDate = document.getElementById('jalaliDate').value || '';
+            const taxPercent = document.getElementById('taxPercent').value || '9';
+            const dutiesPercent = document.getElementById('dutiesPercent').value || '1';
+            const extraNote = document.getElementById('extraNote').value || '';
+
+            let itemsHTML = '';
+            const rows = document.querySelectorAll('#itemsBody tr');
+            if (rows.length === 0) {
+                itemsHTML = `<tr><td colspan="6" style="text-align:center; padding: 10px;">هیچ کالایی ثبت نشده</td></tr>`;
+            } else {
+                rows.forEach(row => {
+                    const desc = row.querySelector('.desc')?.value || '---';
+                    const qty = parseFloat(row.querySelector('.qty')?.value) || 0;
+                    const price = parseFloat(row.querySelector('.price')?.value) || 0;
+                    const discount = parseFloat(row.querySelector('.discount')?.value) || 0;
+                    const itemTotal = (qty * price) - discount;
+                    itemsHTML += `
+                        <tr>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;">${row.children[0].textContent}</td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: right;">${desc}</td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;">${qty}</td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;">${price.toLocaleString('fa-IR')}</td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;">${discount.toLocaleString('fa-IR')}</td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;">${itemTotal.toLocaleString('fa-IR')}</td>
+                        </tr>`;
+                });
+            }
+
+            const subtotalText = document.getElementById('subtotal').textContent.split(' ')[0] || '0';
+            const totalDiscountText = document.getElementById('totalDiscount').textContent.split(' ')[0] || '0';
+            const taxText = document.getElementById('taxAmount').textContent.split(' ')[0] || '0';
+            const dutiesText = document.getElementById('dutiesAmount').textContent.split(' ')[0] || '0';
+            const finalText = document.getElementById('finalAmount').textContent.split(' ')[0] || '0';
+
+            const printDiv = document.getElementById('printVersion');
+            printDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; border-bottom: 3px solid #4f46e5; padding-bottom: 15px;">
+                    <img src="logo-placeholder.png" alt="لوگو" style="width: 80px; height: 80px; object-fit: contain; border: 1px dashed #ccc; border-radius: 12px; padding: 4px; background: #f9fafb;" 
+                         onerror="this.style.display='none'">
+                    <div style="flex:1; margin-right: 15px;">
+                        <h2 style="font-size: 1.8rem; color: #4f46e5; margin-bottom: 5px;">${companyName}</h2>
+                        <p style="margin: 3px 0; font-size: 0.9rem;">شماره اقتصادی: ${economic} | کد پستی: ${postal}</p>
+                        <p style="margin: 3px 0; font-size: 0.9rem;">تلفن: ${phone}</p>
+                        <p style="margin: 3px 0; font-size: 0.9rem;">آدرس دفتر: ${officeAddr}</p>
+                        <p style="margin: 3px 0; font-size: 0.9rem;">آدرس کارگاه: ${workshopAddr}</p>
+                    </div>
+                    <div style="text-align: left; font-weight: bold;">
+                        <h1 style="font-size: 2.2rem; color: #4f46e5; letter-spacing: 2px; margin: 0;">فاکتور</h1>
+                        <p style="margin: 5px 0; font-size: 1rem;">شماره: ${invoiceNum}</p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <div style="width: 48%;">
+                        <h4 style="margin-bottom: 8px;">مشتری:</h4>
+                        <p style="margin: 4px 0;"><strong>نام:</strong> ${custName}</p>
+                        <p style="margin: 4px 0;"><strong>تلفن:</strong> ${custPhone}</p>
+                        <p style="margin: 4px 0;"><strong>آدرس:</strong> ${custAddr}</p>
+                    </div>
+                    <div style="width: 48%;">
+                        <p style="margin: 4px 0;"><strong>تاریخ میلادی:</strong> ${gregDate}</p>
+                        <p style="margin: 4px 0;"><strong>تاریخ هجری شمسی:</strong> ${jalaliDate}</p>
+                    </div>
+                </div>
+                <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <thead>
+                        <tr>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">ردیف</th>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">شرح</th>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">تعداد</th>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">قیمت واحد (ریال)</th>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">تخفیف (ریال)</th>
+                            <th style="background: #4f46e5; color: white; padding: 8px 5px; text-align: center; border: 1px solid #000;">مبلغ کل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${itemsHTML}
+                    </tbody>
+                </table>
+                <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                    <table style="width: 55%; border-collapse: collapse;">
+                        <tr><td style="padding: 6px 10px; text-align: right;">جمع کل:</td><td style="padding: 6px 10px; font-weight: bold; text-align: left;">${subtotalText} ریال</td></tr>
+                        <tr><td style="padding: 6px 10px; text-align: right;">تخفیف کل:</td><td style="padding: 6px 10px; font-weight: bold; text-align: left;">${totalDiscountText} ریال</td></tr>
+                        <tr><td style="padding: 6px 10px; text-align: right;">مالیات (${taxPercent}٪):</td><td style="padding: 6px 10px; font-weight: bold; text-align: left;">${taxText} ریال</td></tr>
+                        <tr><td style="padding: 6px 10px; text-align: right;">عوارض (${dutiesPercent}٪) ${extraNote ? '('+extraNote+')' : ''}:</td><td style="padding: 6px 10px; font-weight: bold; text-align: left;">${dutiesText} ریال</td></tr>
+                        <tr style="background: #4f46e5; color: white;"><td style="padding: 8px 10px; text-align: right; border-radius: 5px;">قابل پرداخت:</td><td style="padding: 8px 10px; font-weight: bold; text-align: left; border-radius: 5px;">${finalText} ریال</td></tr>
+                    </table>
+                </div>
+                <div style="margin-top: 40px; text-align: center; font-size: 0.9rem; color: #666; border-top: 1px solid #ccc; padding-top: 15px;">
+                    <p>با تشکر از اعتماد شما | چاپ و تبلیغات رنگا</p>
+                </div>
+            `;
+        }
+
+        // دانلود عکس
+        function downloadInvoiceImage() {
+            const element = document.getElementById('printVersion');
+            if (typeof html2canvas === 'undefined') {
+                alert('کتابخانه html2canvas بارگذاری نشده است.');
+                return;
+            }
+            
+            // اطمینان از بارگذاری فونت
+            document.fonts.load('12pt Vazir').then(() => {
+                html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    width: element.scrollWidth,
+                    height: element.scrollHeight,
+                    windowWidth: element.scrollWidth,
+                    windowHeight: element.scrollHeight,
+                    onclone: function(clonedDoc) {
+                        // اطمینان از نمایش صحیح در کپی
+                        clonedDoc.getElementById('printVersion').style.position = 'relative';
+                        clonedDoc.getElementById('printVersion').style.top = '0';
+                        clonedDoc.getElementById('printVersion').style.left = '0';
+                    }
+                }).then(canvas => {
+                    const customerName = document.getElementById('customerName').value.trim() || 'بی‌نام';
+                    const link = document.createElement('a');
+                    link.download = `فاکتور ${customerName}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).catch(err => {
+                    console.error('خطا در ایجاد تصویر:', err);
+                    alert('خطا در ایجاد تصویر. لطفاً دوباره تلاش کنید.');
+                }).then(canvas => {
+                    const customerName = document.getElementById('customerName').value.trim() || 'بی‌نام';
+                    const link = document.createElement('a');
+                    link.download = `فاکتور ${customerName}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).catch(err => {
+                    console.error('خطا در ایجاد تصویر:', err);
+                    alert('خطا در ایجاد تصویر. لطفاً دوباره تلاش کنید.');
+                });
+            });
+        }
+
+        // دانلود PDF
+        function downloadInvoicePDF() {
+            const element = document.getElementById('printVersion');
+            if (typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined' || typeof window.jspdf.jsPDF === 'undefined') {
+                alert('کتابخانه‌های مورد نیاز (html2canvas یا jsPDF) بارگذاری نشده‌اند.');
+                return;
+            }
+            
+            document.fonts.load('12pt Vazir').then(() => {
+                html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    onclone: function(clonedDoc) {
+                        clonedDoc.getElementById('printVersion').style.position = 'relative';
+                        clonedDoc.getElementById('printVersion').style.top = '0';
+                        clonedDoc.getElementById('printVersion').style.left = '0';
+                    }
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const imgWidth = canvas.width;
+                    const imgHeight = canvas.height;
+                    
+                    // نسبت تبدیل پیکسل به میلی‌متر (72 DPI معمول وب)
+                    const mmPerPx = 25.4 / 72;
+                    const pdfWidth = imgWidth * mmPerPx;
+                    const pdfHeight = imgHeight * mmPerPx;
+                    
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF({
+                        orientation: pdfWidth > pdfHeight ? 'landscape' : 'portrait',
+                        unit: 'mm',
+                        format: [pdfWidth, pdfHeight]
+                    });
+                    
+                    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    
+                    const customerName = document.getElementById('customerName').value.trim() || 'بی‌نام';
+                    pdf.save(`فاکتور ${customerName}.pdf`);
+                }).catch(err => {
+                    console.error('خطا در ایجاد PDF:', err);
+                    alert('خطا در ایجاد PDF. لطفاً دوباره تلاش کنید.');
+                });
+            });
+        }
+
+        // گوش دادن به تغییرات برای بروزرسانی پیش‌نمایش و نسخهٔ پرینت
+        const allInputs = document.querySelectorAll('input, textarea');
+        allInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                updatePreview();
+                updatePrintVersion();
+            });
+            input.addEventListener('change', function() {
+                updatePreview();
+                updatePrintVersion();
+            });
+        });
+
+        // اضافه کردن سطر اولیه
+        window.addEventListener('load', function() {
+            updatePreview();
+            updatePrintVersion();
+        });
+
+        addRow();
+    </script>
+</body>
+</html>

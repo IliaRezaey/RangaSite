@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رنگا - چاپ و تبلیغات</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+  />
+  
+<link rel="icon" type="image/png" href="images/ranga logo set.jpg" />
+1
+<link rel="icon" type="image/png" href="http://example.com/image.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2(card).css">
+  <style>
+    /* Basic reset & fonts */
+    body {
+      font-family: 'Vazir';
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #222;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+    
+        @font-face {
+  font-family: 'Far_Bold';
+  src: url('fonts/Far_Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: #222;
+    }
+    .navbar-nav .nav-link {
+      padding: 1rem;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #e94e1b;
+    }
+    /* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('images/4e0609ad-bf4d-4eb4-9f56-80a79fa444f4.webp') center center/cover no-repeat;
+  /* background-attachment: fixed; حذف شد */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 0 15px;
+}
+
+/* برای موبایل هم مطمئن باش این تنظیمات باشه */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+    background-size: 225% auto;
+     /* مطمئن باش fixed نیست */
+  }
+}
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+    }
+    .btn-primary {
+      background: #e94e1b;
+      border: none;
+      padding: 12px 35px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #c63c14;
+    }
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    /* Services */
+    .services .service-item {
+      background: #fff;
+      border-radius: 8px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(255, 70, 14, 0.223);
+      transition: transform 0.3s ease;
+      text-align: center;
+      cursor: default;
+    }
+    .services .service-item:hover {
+      transform: translateY(-15px);
+    }
+    .services .service-icon {
+      font-size: 48px;
+      color: #e94e1b;
+      margin-bottom: 20px;
+    }
+    .services h3 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .services p {
+      font-weight: 400;
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    /* Portfolio */
+    .portfolio {
+      background: #f9f9f9;
+    }
+    .portfolio .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s ease;
+    }
+    .portfolio .portfolio-item:hover {
+      transform: scale(1.05);
+    }
+    .portfolio .portfolio-img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.5s ease;
+    }
+    .portfolio .portfolio-item:hover .portfolio-img {
+      transform: scale(1.1);
+    }
+    .portfolio .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 111, 0, 0.8);
+      color: #fff;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border-radius: 8px;
+      transition: opacity 0.3s ease;
+    }
+    .portfolio .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio .portfolio-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 5px;
+    }
+    .portfolio .portfolio-category {
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: rgb(233, 79, 28);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .floating-box{
+  position: fixed;
+  right: 30px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* متن بالا */
+.floating-text{
+  background: #fff;
+  color: #333;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+
+/* دکمه */
+.floating-btn{
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(45deg,#ff7a00,#ff9d2f);
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(255,120,0,0.6);
+  transition:0.3s;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.12)}
+  100%{transform:scale(1)}
+}
+
+.floating-btn:hover{
+  transform:scale(1.15) rotate(10deg);
+}
+/* صفحه‌نمایش لودینگ */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; /* پس‌زمینه تمیز */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999; /* بالاتر از همه‌چیز */
+}
+
+/* دایره لودینگ نارنجی */
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #ff9f43; /* نارنجی شیک */
+  border-top: 8px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* چرخش */
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* محو شدن نرم */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+  </style>
+</head>
+<div id="preloader">
+  <div class="loader"></div>
+</div>
+<script>
+  // لودینگ ۲ ثانیه‌ای
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const p = document.getElementById("preloader");
+      p.classList.add("fade-out");
+
+      // بعد از محو شدن DOM را تمیز کن
+      setTimeout(() => p.remove(), 400);
+    }, 2000); // دقیقاً ۲ ثانیه
+  });
+</script>
+
+<body style="font-family: Vazir;">
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg container">
+      <img src="images/ranga logo.png" alt="" style="width: 100px;">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+                    <li class="nav-item">
+            <a class="nav-link" href="ranga-bot.html">رنگا بات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="panel.html">پنل کارمندان</a>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="#contact">تماس با ما</a>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="#services">درباره ما</a>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="gallery.html">گالری محصولات</a>
+          </li>
+                              <li class="nav-item">
+            <a class="nav-link active" href="#hero">خانه</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero" data-aos="fade-in" data-aos-duration="1500">
+    <div>
+<h1 dir="rtl" style="font-family: Far_Bold;"> رنگا، جایی که ایده ها رنگ می گیرند...</h1>
+      <br>
+      <br>
+      <br>
+      <p style="color: #1a1a1a;">چاپ و تبلیغات رنگا</p>
+      <a href="#articles" class="btn btn-primary" dir="rtl" style="background-color: #f38221;">خدمات ما!</a>
+    </div>
+  </section>
+
+
+    <!-- این کلاس والد اصلی است که تمام استایل ها به آن وابسته اند -->
+    <div class="ranga-component-wrapper"> 
+        <div class="ranga-section-container">
+            <div class="ranga-content-wrapper">
+                
+                <!-- بخش تصاویر -->
+                <div class="ranga-image-side">
+                    <div class="image-box image-main">
+                        <img src="images/rain ranga.jpeg" 
+                             alt="رنگا">
+                    </div>
+
+                </div>
+
+                <!-- بخش متن -->
+                <div class="ranga-text-side" style="font-family: vazir;">
+                    <h2 class="ranga-title">رنگا</h2>
+                    <p class="ranga-subtitle">رنگا فقط یک مجموعه چاپ نیست؛</p>
+                    
+                    <div class="ranga-body">
+                        <p>رنگا یک جهان از خلاقیت و ظرافت است. ما باور داریم چاپ باید چیزی فراتر از انتقال تصویر باشد و باید تجربه‌ای از کیفیت، احساس و هویت باشد.</p>
+                        <p>در رنگا، هر پروژه از یک نگاه هنری آغاز می‌شود، از طراحی کارت ویزیت گرفته تا تولید هاردباکس‌های خاص و لوکس، همه چیز زیر نظر متخصصانی انجام می‌شود که عاشق جزئیات‌اند. اگر به دنبال چاپی هستی که محصولت را مثل جواهر نمایش دهد، رنگا دقیقاً همان جایی است که باید باشی.</p>
+                    </div>
+                    
+                    <a href="#contact" class="ranga-cta">پس منتظر چی هستی؟</a>
+                    
+                    <div class="ranga-feature-highlight">
+                        <span><i class="fas fa-check-circle"></i></span>
+                        <p>دقت و سرعت دغدغه اصلی این مجموعه است</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- آیکون‌ها (نیاز به Font Awesome) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+  <center>
+    <img src="images/Printer-rafiki.png" alt="" style="width:500px ; " data-aos="fade-up" data-aos-duration="1200">
+  </center>
+  <div class="elite-banner" data-aos="fade-up" data-aos-duration="1200">
+    <div class="shine"></div>
+    <span class="text">
+        <strong style="font-family: Vazir;">بیش از ۲۵ سال تجربه حرفه‌ای</strong>
+    </span>
+    <span class="badge" style="font-family: Vazir;">از سال ۱۳۷۸</span>
+</div>
+
+<style>
+.elite-banner {
+    position: relative;
+    overflow: hidden;
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 14px 35px;
+    border-radius: 60px;
+    background: linear-gradient(135deg,#ffffff,#fff6ed);
+    border: 2px solid #ff8c00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl;
+    font-family: sans-serif;
+
+    /* نور داخلی */
+    box-shadow:
+        inset 0 0 15px rgba(255,140,0,0.4),
+        0 0 20px rgba(255,140,0,0.3);
+
+    /* انیمیشن تکون */
+    animation: wiggle 2s infinite ease-in-out,
+               glowAura 3s infinite ease-in-out;
+}
+
+.elite-banner .text {
+    font-size: 16px;
+    color: #333;
+}
+
+.elite-banner strong {
+    color: #ff7a00;
+}
+
+.elite-banner .badge {
+    background: #ff8c00;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255,140,0,0.6);
+}
+
+/* افکت عبور نور */
+.shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+    animation: shineMove 4s infinite;
+}
+
+/* تکون خوردن ملایم */
+@keyframes wiggle {
+    0%,100% { transform: rotate(0deg); }
+    25% { transform: rotate(0.6deg); }
+    75% { transform: rotate(-0.6deg); }
+}
+
+/* درخشش هاله‌ای بیرونی */
+@keyframes glowAura {
+    0%,100% { box-shadow:
+        inset 0 0 15px rgba(255,140,0,0.4),
+        0 0 20px rgba(255,140,0,0.3); }
+    50% { box-shadow:
+        inset 0 0 25px rgba(255,140,0,0.6),
+        0 0 40px rgba(255,140,0,0.6); }
+}
+
+/* حرکت نور */
+@keyframes shineMove {
+    0% { left: -100%; }
+    20%,100% { left: 100%; }
+}
+</style>
+<br>
+<br>
+<br><br><br><br><br>
+  <!-- Services Section -->
+  <section id="services" class="services container" data-aos="fade-up" data-aos-duration="1200">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-dollar-sign"></i>
+          </div>
+          <h3 dir="rtl">قیمت مناسب و منصفانه</h3>
+          <p dir="rtl">تعرفه‌های ما شفاف و رقابتی بوده و خدمات با کیفیت را با بهترین قیمت ارائه می‌دهیم.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-truck"></i>
+          </div>
+          <h3 dir="rtl">تحویل سریع و به موقع</h3>
+          <p dir="rtl">سفارش‌های شما در کوتاه‌ترین زمان ممکن و طبق زمان‌بندی مشخص تحویل داده می‌شود.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-th-large"></i>
+          </div>
+          <h3 dir="rtl">تنوع خدمات چاپ</h3>
+          <p dir="rtl">انجام کلیه خدمات و امورات مربوط به چاپ و تبلیغات</p>
+        </div>
+      </div>
+            <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 dir="rtl">مشاوره تخصصی</h3>
+          <p dir="rtl"> کارشناسان ما با شما مشورت کرده و بهترین راهکارها را پیشنهاد می‌دهند.</p>
+        </div>
+      </div>
+            <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-check-circle"></i>
+          </div>
+          <h3 dir="rtl">استفاده از مواد مرغوب</h3>
+          <p dir="rtl">فقط از کاغذ و متریال‌های باکیفیت استفاده می‌کنیم تا چاپی با دوام و باکیفیت داشته باشید.</p>
+        </div>
+      </div>
+            <div class="col-md-4">
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa fa-award"></i>
+          </div>
+          <h3 dir="rtl">بیش از 25 سال سابقه</h3>
+          <p dir="rtl">دارای تجربه بسیار و برندی با اعتبار و متمایز با سایر برند ها</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+<br>
+<div class="floating-box">
+  <div class="floating-text">
+    برای پرسش سوالات متداول، به رنگا بات سر بزنید
+  </div>
+
+  <div class="floating-btn" onclick="window.location.href='ranga-bot.html'">
+    <img src="images/ranga logo.png" alt="" style="width: 50px;">
+  </div>
+</div>
+
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio container" data-aos="fade-up" data-aos-duration="1200">
+    <br>
+    <br>
+    <h2 class="text-center mb-5">گالری محصولات ما</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="portfolio-item">
+          <img
+            src="images/ساک دستی.jpg"
+            alt="Project 1"
+            class="portfolio-img"/>
+          <div class="portfolio-overlay">
+            <h4 class="portfolio-title">ساک دستی</h4>
+            <span class="portfolio-category">هر رنگ و تنوع</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="portfolio-item">
+          <img
+            src="images/کارت ویزیت .jpg"
+            alt="Project 2"
+            class="portfolio-img"
+          />
+          <div class="portfolio-overlay">
+            <span class="portfolio-category">Development</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="portfolio-item">
+          <img
+            src="images/بروشور.jpg"
+            alt="Project 3"
+            class="portfolio-img"
+          />
+          <div class="portfolio-overlay">
+            <h4 class="portfolio-title">بروشور</h4>
+            <span class="portfolio-category">Marketing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <center>
+      <button type="button" class="btn btn-warning" dir="rtl"><a href="gallery.html">بیشتر...</a></button>
+    </center>
+    <br>
+  </section>
+<br>
+<br>
+<br>
+<br>
+  <center>
+    <img src="images/Product quality-bro.png" alt="" style="width:500px ; " data-aos="fade-up" data-aos-duration="1200">
+  </center>
+  <!-- شروع بخش مقالات و آموزش -->
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="ranga-banner" data-aos="fade-up" data-aos-duration="1200">
+
+    <div class="ranga-logo">
+        <img src="images/ranga logo.png" alt="logo">
+    </div>
+
+    <div class="ranga-content" style="font-family: Vazir;">
+        <h2 dir="rtl">برای پاسخگویی به سوالات متداول</h2>
+        <p dir="rtl">به <span dir="rtl">رنگا بات</span> سر بزنید 🚀</p>
+
+        <button dir="rtl" ><a href="ranga-bot.html">ورود به رنگا بات</a></button>
+    </div>
+
+</div>
+ <br>
+ <br>
+<style>
+
+
+.ranga-banner{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+
+    background:linear-gradient(270deg,#ffb36b,#ff9a00,#ff6a00);
+    background-size:400% 400%;
+
+    animation:gradientMove 8s ease infinite;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+    color:white;
+    font-family:sans-serif;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.ranga-logo{
+    width:90px;
+    height:90px;
+    background:rgba(255,255,255,0.15);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter:blur(10px);
+}
+
+.ranga-logo img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+}
+
+.ranga-content h2{
+    margin:0;
+    font-size:22px;
+}
+
+.ranga-content p{
+    margin:5px 0 15px;
+    font-size:18px;
+}
+
+.ranga-content span{
+    font-weight:bold;
+}
+
+.ranga-content button{
+    background:white;
+    color:#000000;
+    border:none;
+    padding:12px 22px;
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.ranga-content button:hover{
+    transform:scale(1.05);
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* ریسپانسیو */
+
+@media (max-width:700px){
+
+.ranga-banner{
+    flex-direction:column;
+    text-align:center;
+}
+
+.ranga-logo{
+    margin-bottom:10px;
+}
+
+}
+
+</style>
+
+<script>
+
+function goToRanga(){
+    window.location.href="ranga-bot.html"
+}
+
+</script>
+
+<section id="articles" class="bg-light-gray py-5" data-aos="fade-up" data-aos-duration="1200">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center" data-aos="fade-up">
+        <h1>خدمات ما</h1>
+        <p class="text-muted" dir="rtl">جدیدترین خدمات ما درباره چاپ و برندینگ</p>
+        <p dir="rtl">خدمات ما شامل چاپ افست اعم از: جعبه و بسته بندی به خصوص هاردباکس(جعبه سخت و لوکس)، لیبل، هولوگرام، ست اداری، انواع بگ های کاغذی و پارچه ای، کلیه خدمات چاپ دیجیتال و... است.</p>
+        <p dir="rtl">تمامی خدمات با دستگاه های حرفه ای و به روش های غیرسنتی و مدرن و صنعتی صورت می گیرد.</p>
+      </div>
+    </div>
+<br>
+<br>
+
+<!-- ======================== استایل‌های دیو نارنجی-سفید ======================== -->
+<style>
+  /* ***********************************************
+     *  این استایل‌ها را یکبار در <head> یا قبل از
+     *  استفاده از div در صفحه خود قرار دهید.
+     *************************************************/
+  #oam-container {
+    /* دیو اصلی */
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    min-height: 320px;
+    background: linear-gradient(145deg, #fff7f0 0%, #ffffff 30%, #fff3e8 60%, #ffffff 100%);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(255, 140, 0, 0.25), 0 10px 30px rgba(255, 100, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    cursor: default;
+    user-select: none;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+    /* اگر می‌خواهید دیو وسط صفحه قرار بگیرد، از margin: 20px auto; استفاده کنید */
+    margin: 20px auto; /* می‌توانید این خط را حذف یا تنظیم کنید */
+  }
+
+  #oam-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 70px rgba(255, 140, 0, 0.35), 0 15px 40px rgba(255, 80, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  #oam-container:active {
+    transform: translateY(-3px) scale(0.98);
+    transition: all 0.2s ease;
+  }
+
+  /* ذرات شناور */
+  #oam-container .oam-particles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  #oam-container .oam-particle {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff9a56, #ff6b00);
+    filter: blur(1px); opacity: 0.55;
+    animation: oam-float 6s ease-in-out infinite;
+  }
+  #oam-container .oam-particle:nth-child(1) { width:14px; height:14px; top:15%; left:10%; animation-delay:0s; animation-duration:5.2s; background:radial-gradient(circle at 30% 30%, #ffb380, #ff7b1e); }
+  #oam-container .oam-particle:nth-child(2) { width:22px; height:22px; top:70%; right:12%; animation-delay:-2s; animation-duration:6.8s; background:radial-gradient(circle at 30% 30%, #ffaa66, #ff5e00); }
+  #oam-container .oam-particle:nth-child(3) { width:10px; height:10px; top:45%; left:75%; animation-delay:-4s; animation-duration:4.5s; background:radial-gradient(circle at 30% 30%, #ffcc99, #ff8800); }
+  #oam-container .oam-particle:nth-child(4) { width:18px; height:18px; bottom:20%; left:20%; animation-delay:-1.5s; animation-duration:7.3s; background:radial-gradient(circle at 30% 30%, #ffb380, #ff6b00); }
+  #oam-container .oam-particle:nth-child(5) { width:8px; height:8px; top:25%; right:25%; animation-delay:-3.2s; animation-duration:5.7s; background:radial-gradient(circle at 30% 30%, #ffccaa, #ff6600); }
+  #oam-container .oam-particle:nth-child(6) { width:16px; height:16px; top:55%; left:45%; animation-delay:-5s; animation-duration:6.1s; background:radial-gradient(circle at 30% 30%, #ff9a56, #ff7b1e); }
+  #oam-container .oam-particle:nth-child(7) { width:20px; height:20px; bottom:12%; right:35%; animation-delay:-0.8s; animation-duration:5.9s; background:radial-gradient(circle at 30% 30%, #ffaa66, #ff5e00); }
+
+  @keyframes oam-float {
+    0%,100% { transform: translateY(0) translateX(0) scale(1); opacity:0.5; }
+    25% { transform: translateY(-28px) translateX(12px) scale(1.3); opacity:0.75; }
+    50% { transform: translateY(-8px) translateX(-8px) scale(0.9); opacity:0.45; }
+    75% { transform: translateY(-35px) translateX(-14px) scale(1.2); opacity:0.65; }
+  }
+
+  /* حباب‌های نوری */
+  #oam-container .oam-glow-orbs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  #oam-container .oam-glow-orb { position: absolute; border-radius: 50%; filter: blur(45px); animation: oam-pulse 4s ease-in-out infinite; }
+  #oam-container .oam-glow-orb.orb-1 { width:180px; height:180px; top:-60px; left:-50px; background:rgba(255,140,0,0.35); animation-delay:0s; }
+  #oam-container .oam-glow-orb.orb-2 { width:200px; height:200px; bottom:-80px; right:-40px; background:rgba(255,100,0,0.25); animation-delay:-2s; }
+  #oam-container .oam-glow-orb.orb-3 { width:140px; height:140px; top:40%; left:60%; background:rgba(255,160,60,0.2); animation-delay:-1s; animation-duration:5.5s; }
+
+  @keyframes oam-pulse {
+    0%,100% { transform: scale(1); opacity:0.4; }
+    50% { transform: scale(1.35); opacity:0.65; }
+  }
+
+  /* نوارهای تزئینی */
+  #oam-container .oam-decorative-stripes { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.07; }
+  #oam-container .oam-stripe {
+    position: absolute; height: 3px; background: #ff6b00; border-radius: 2px;
+    animation: oam-stripeMove 8s linear infinite;
+  }
+  #oam-container .oam-stripe:nth-child(1) { top:8%; left:-40%; width:350px; transform:rotate(-25deg); animation-delay:0s; }
+  #oam-container .oam-stripe:nth-child(2) { top:25%; right:-35%; width:280px; transform:rotate(-25deg); animation-delay:-3s; }
+  #oam-container .oam-stripe:nth-child(3) { bottom:30%; left:-30%; width:320px; transform:rotate(-25deg); animation-delay:-5.5s; }
+
+  @keyframes oam-stripeMove {
+    0% { transform: rotate(-25deg) translateX(-100%); opacity:0; }
+    20% { opacity:1; }
+    80% { opacity:1; }
+    100% { transform: rotate(-25deg) translateX(500%); opacity:0; }
+  }
+
+  /* محتوای اصلی */
+  #oam-container .oam-content-wrapper {
+    position: relative; z-index: 10; padding: 45px 40px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 320px; text-align: center;
+  }
+
+  /* قاب متن */
+  #oam-container .oam-text-frame {
+    position: relative;
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(255,140,0,0.25); border-radius: 24px; padding: 30px 35px;
+    box-shadow: 0 8px 32px rgba(255,100,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+    animation: oam-borderGlow 3s ease-in-out infinite;
+  }
+  #oam-container:hover .oam-text-frame {
+    border-color: rgba(255,120,0,0.5); box-shadow: 0 12px 40px rgba(255,100,0,0.18), inset 0 1px 0 #fff;
+  }
+  @keyframes oam-borderGlow {
+    0%,100% { border-color:rgba(255,140,0,0.25); box-shadow:0 8px 32px rgba(255,100,0,0.1), inset 0 1px 0 rgba(255,255,255,0.9); }
+    50% { border-color:rgba(255,120,0,0.55); box-shadow:0 12px 38px rgba(255,100,0,0.2), inset 0 1px 0 #fff; }
+  }
+
+  /* متن شما */
+  #oam-container .oam-user-text {
+    font-size: 1.6rem; font-weight: 700;
+    background: linear-gradient(135deg, #ff6b00, #e05500, #ff8c3a, #cc4400);
+    background-size: 300% 300%;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: oam-gradientShift 4s ease-in-out infinite;
+    letter-spacing: -0.3px; line-height: 1.6;
+    position: relative;
+  }
+  /* انعکاس زیر متن */
+  #oam-container .oam-user-text::after {
+    content: attr(data-text);
+    position: absolute; top: 105%; left: 50%; transform: translateX(-50%) scaleY(-0.4);
+    background: linear-gradient(to bottom, rgba(255,107,0,0.4), transparent);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(4px); opacity: 0.5; pointer-events: none;
+    white-space: nowrap; font-size: inherit; font-weight: inherit; letter-spacing: inherit;
+  }
+  @keyframes oam-gradientShift {
+    0%,100% { background-position:0% 50%; }
+    25% { background-position:100% 0%; }
+    50% { background-position:100% 100%; }
+    75% { background-position:0% 100%; }
+  }
+
+  /* تزئینات اطراف قاب */
+  #oam-container .oam-ornament {
+    position: absolute; pointer-events: none; z-index: -1;
+    animation: oam-ornamentSpin 20s linear infinite; opacity:0.5;
+  }
+  #oam-container .oam-ornament.top-left { top:-18px; left:-18px; width:36px; height:36px; animation-delay:0s; }
+  #oam-container .oam-ornament.top-right { top:-18px; right:-18px; width:36px; height:36px; animation-delay:-7s; }
+  #oam-container .oam-ornament.bottom-left { bottom:-18px; left:-18px; width:36px; height:36px; animation-delay:-13s; }
+  #oam-container .oam-ornament.bottom-right { bottom:-18px; right:-18px; width:36px; height:36px; animation-delay:-3s; }
+  @keyframes oam-ornamentSpin {
+    0% { transform: rotate(0deg) scale(1); opacity:0.45; }
+    50% { transform: rotate(180deg) scale(1.25); opacity:0.7; }
+    100% { transform: rotate(360deg) scale(1); opacity:0.45; }
+  }
+
+  /* خط درخشان پایین */
+  #oam-container .oam-accent-line {
+    position: absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, transparent, #ff8c3a, #ff5e00, #ff8c3a, transparent);
+    animation: oam-shimmerLine 3s ease-in-out infinite;
+    border-radius: 0 0 32px 32px;
+  }
+  @keyframes oam-shimmerLine {
+    0%,100% { opacity:0.4; background:linear-gradient(90deg, transparent, #ff8c3a, #ff5e00, #ff8c3a, transparent); }
+    50% { opacity:0.9; background:linear-gradient(90deg, transparent, #ffb380, #ff7b1e, #ffb380, transparent); }
+  }
+
+  /* دایره‌های نبض‌دار گوشه‌ها */
+  #oam-container .oam-corner-dot {
+    position: absolute; width:8px; height:8px; background:#ff6b00; border-radius:50%;
+    animation: oam-dotPulse 2.5s ease-in-out infinite; z-index:2; pointer-events:none;
+    box-shadow: 0 0 12px rgba(255,107,0,0.6);
+  }
+  #oam-container .oam-corner-dot.dot-tl { top:25px; left:25px; animation-delay:0s; }
+  #oam-container .oam-corner-dot.dot-tr { top:25px; right:25px; animation-delay:-0.8s; }
+  #oam-container .oam-corner-dot.dot-bl { bottom:25px; left:25px; animation-delay:-1.6s; }
+  #oam-container .oam-corner-dot.dot-br { bottom:25px; right:25px; animation-delay:-2.2s; }
+  @keyframes oam-dotPulse {
+    0%,100% { transform:scale(1); opacity:0.6; }
+    50% { transform:scale(2.2); opacity:1; box-shadow:0 0 20px rgba(255,107,0,0.9); }
+  }
+
+  /* ضربدرهای تزئینی */
+  #oam-container .oam-cross-decor {
+    position: absolute; pointer-events: none; z-index: 1;
+    animation: oam-gentleRotate 15s linear infinite; opacity:0.15;
+  }
+  #oam-container .oam-cross-decor.cross-1 { top:18%; right:15%; width:35px; height:35px; animation-delay:0s; }
+  #oam-container .oam-cross-decor.cross-2 { bottom:22%; left:8%; width:45px; height:45px; animation-delay:-5s; animation-duration:18s; }
+  @keyframes oam-gentleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* تنظیمات ریسپانسیو */
+  @media (max-width: 600px) {
+    #oam-container .oam-content-wrapper { padding:30px 22px; }
+    #oam-container .oam-text-frame { padding:22px 25px; border-radius:20px; }
+    #oam-container .oam-user-text { font-size:1.25rem; }
+    #oam-container .oam-corner-dot { width:6px; height:6px; }
+    #oam-container .oam-corner-dot.dot-tl { top:18px; left:18px; }
+    #oam-container .oam-corner-dot.dot-tr { top:18px; right:18px; }
+    #oam-container .oam-corner-dot.dot-bl { bottom:18px; left:18px; }
+    #oam-container .oam-corner-dot.dot-br { bottom:18px; right:18px; }
+  }
+</style>
+
+<!-- ======================== دیو نارنجی-سفید انیمیشنی ======================== -->
+<div id="oam-container" data-aos="fade-up" data-aos-duration="1200"> 
+
+  <!-- ذرات شناور نارنجی -->
+  <div class="oam-particles">
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+    <div class="oam-particle"></div>
+  </div>
+
+  <!-- حباب‌های نوری بزرگ -->
+  <div class="oam-glow-orbs">
+    <div class="oam-glow-orb orb-1"></div>
+    <div class="oam-glow-orb orb-2"></div>
+    <div class="oam-glow-orb orb-3"></div>
+  </div>
+
+  <!-- نوارهای مورب تزئینی -->
+  <div class="oam-decorative-stripes">
+    <div class="oam-stripe"></div>
+    <div class="oam-stripe"></div>
+    <div class="oam-stripe"></div>
+  </div>
+
+  <!-- ضربدرهای نارنجی -->
+  <svg class="oam-cross-decor cross-1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <line x1="5" y1="5" x2="35" y2="35" stroke="#ff6b00" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="35" y1="5" x2="5" y2="35" stroke="#ff6b00" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <svg class="oam-cross-decor cross-2" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <line x1="5" y1="5" x2="35" y2="35" stroke="#ff7b1e" stroke-width="2" stroke-linecap="round"/>
+    <line x1="35" y1="5" x2="5" y2="35" stroke="#ff7b1e" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <!-- دایره‌های نبض‌دار گوشه‌ها -->
+  <div class="oam-corner-dot dot-tl"></div>
+  <div class="oam-corner-dot dot-tr"></div>
+  <div class="oam-corner-dot dot-bl"></div>
+  <div class="oam-corner-dot dot-br"></div>
+
+  <!-- محتوای اصلی -->
+  <div class="oam-content-wrapper">
+    <div class="oam-text-frame">
+
+      <!-- تزئینات حلقه‌ای اطراف قاب -->
+      <svg class="oam-ornament top-left" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="4" fill="none" stroke="#ff8c3a" stroke-width="2.5"/>
+        <circle cx="15" cy="15" r="1.5" fill="#ff6b00"/>
+      </svg>
+      <svg class="oam-ornament top-right" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="4" fill="none" stroke="#ff8c3a" stroke-width="2.5"/>
+        <circle cx="15" cy="15" r="1.5" fill="#ff6b00"/>
+      </svg>
+      <svg class="oam-ornament bottom-left" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="4" fill="none" stroke="#ff8c3a" stroke-width="2.5"/>
+        <circle cx="15" cy="15" r="1.5" fill="#ff6b00"/>
+      </svg>
+      <svg class="oam-ornament bottom-right" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="4" fill="none" stroke="#ff8c3a" stroke-width="2.5"/>
+        <circle cx="15" cy="15" r="1.5" fill="#ff6b00"/>
+      </svg>
+
+      <!-- 👇👇👇 متن خود را اینجا قرار دهید 👇👇👇 -->
+      <span class="oam-user-text" data-text="متن من اینجاست ✨🍊">انجام تمامی محصولات چاپی، علاوه بر تولید تخصصی هاردباکس</span>
+      <!-- 👆👆👆 (حتماً data-text را با همان متن به‌روز کنید تا انعکاس کار کند) 👆👆👆 -->
+
+    </div>
+  </div>
+
+  <!-- خط درخشان انتهای دیو -->
+  <div class="oam-accent-line"></div>
+
+</div>
+
+<br>
+<div class="articles-container">
+  <style>
+    /* وارد کردن فونت وزیر */
+    @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .articles-container {
+      direction: rtl;
+      font-family: 'Vazir', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      background-color: #fff9f5;
+      border-radius: 20px;
+    }
+    
+    .articles-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #e65100;
+      font-size: 2.4rem;
+      font-weight: 900;
+      position: relative;
+      padding-bottom: 15px;
+      animation: slideDown 0.8s ease;
+    }
+    
+    .articles-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: linear-gradient(90deg, #ff6d00, #ff9100, #ffab40);
+      border-radius: 3px;
+      animation: barPulse 2s infinite alternate;
+    }
+    
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    
+    .article-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(255, 87, 34, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      animation: fadeInUp 0.8s ease both;
+    }
+    
+    .article-card:nth-child(1) { animation-delay: 0.1s; }
+    .article-card:nth-child(2) { animation-delay: 0.3s; }
+    .article-card:nth-child(3) { animation-delay: 0.5s; }
+    
+    .article-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(255, 87, 34, 0.3);
+    }
+    
+    .article-image {
+
+      object-fit: cover;
+      border-bottom: 4px solid #ff9800;
+      transition: all 0.4s ease;
+      filter: brightness(0.95);
+    }
+    
+    .article-card:hover .article-image {
+      filter: brightness(1.1) saturate(1.2);
+      transform: scale(1.05);
+    }
+    
+    .article-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .article-title {
+      margin-top: 0;
+      color: #e65100;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .article-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 3px;
+      background: #ff9800;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .article-card:hover .article-title::after {
+      width: 80px;
+    }
+    
+    .article-excerpt {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+    
+    .read-more-btn {
+      background: linear-gradient(135deg, #ff6d00, #ff9100);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+      margin-top: auto;
+      font-family: 'Vazir', sans-serif;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .read-more-btn:hover {
+      background: linear-gradient(135deg, #e65100, #ff6d00);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5);
+      animation: pulse 1.5s infinite;
+    }
+    
+    .read-more-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+    
+    .read-more-btn:hover:before {
+      left: 100%;
+    }
+    
+    /* متن کامل مخفی */
+    .article-full-text {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 25px;
+      background-color: #fff8f2;
+      border-top: 1px dashed #ffcc80;
+      line-height: 1.8;
+      color: #5d4037;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+    
+    .article-full-text.show {
+      max-height: 800px;
+      padding: 25px;
+    }
+    
+    .article-full-text ul {
+      padding-right: 20px;
+    }
+    
+    .article-full-text li {
+      margin-bottom: 10px;
+      list-style: none;
+      position: relative;
+      padding-right: 25px;
+    }
+    
+    .article-full-text li::before {
+      content: '✓';
+      position: absolute;
+      right: 0;
+      color: #ff6d00;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    /* انیمیشن‌ها */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 109, 0, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 109, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 109, 0, 0);
+      }
+    }
+    
+    @keyframes barPulse {
+      0% {
+        opacity: 0.7;
+        transform: translateX(-50%) scaleX(1);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1.2);
+      }
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* ریسپانسیو */
+    @media (max-width: 768px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+      .articles-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .articles-container {
+        padding: 20px 10px;
+      }
+      .article-content {
+        padding: 20px;
+      }
+      .read-more-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <br>
+  <br>
+  <h2 class="articles-title" style="font-family: Vazir;" data-aos="fade-up" data-aos-duration="1200">مقالات "رنگا"</h2>
+  
+  <div class="articles-grid" data-aos="fade-up" data-aos-duration="1200">
+    
+    <!-- کارت اول -->
+    <div class="article-card" data-aos="fade-up" data-aos-duration="1200">
+      <img src="images/5 نکته مقاله.png" alt="طراحی لوگو" class="article-image">
+      <div class="article-content">
+        <h3 class="article-title">۵ نکته طلایی در طراحی لوگو</h3>
+        <p class="article-excerpt">لوگو قلب تپنده برند شماست! طراحی یک لوگوی مؤثر می‌تواند تفاوت بین بودن و نبودن در ذهن مشتری را ایجاد کند...</p>
+        <button class="read-more-btn" onclick="toggleFullText(this)">ادامه مطلب</button>
+      </div>
+      <div class="article-full-text">
+        <p>طراحی لوگو هنری است که ترکیبی از خلاقیت، روانشناسی و استراتژی کسب‌وکار است. در اینجا ۵ نکته طلایی:</p>
+        <ul>
+          <li><strong>سادگی ضرب‌المثل موفقیت است:</strong> لوگوهای ساده به راحتی به خاطر سپرده می‌شوند. اپل، نایک، مک‌دونالدز...</li>
+          <li><strong>رنگ‌ها حرف می‌زنند:</strong> هر رنگ پیام خاصی منتقل می‌کند. آبی برای اعتماد، قرمز برای انرژی و سبز برای آرامش.</li>
+          <li><strong>تایپوگرافی شخصیت می‌بخشد:</strong> فونت لوگو باید با شخصیت برند هماهنگ باشد.</li>
+          <li><strong>منحصر به فرد باشید:</strong> لوگوی شما باید مانند اثر انگشت برندتان منحصر به فرد باشد.</li>
+          <li><strong>چندمنظوره طراحی کنید:</strong> از کارت ویزیت تا بیلبورد شهری، باید خوانا باشد.</li>
+        </ul>
+        <p>یادتان باشد: یک لوگوی عالی داستان برند شما را روایت می‌کند!</p>
+      </div>
+    </div>
+    
+    <!-- کارت دوم -->
+    <div class="article-card">
+      <img src="images/هاردباکس مقاله.png" alt="هاردباکس" class="article-image">
+      <div class="article-content">
+        <h3 class="article-title">هاردباکس: قهرمان ناشناخته بسته‌بندی!</h3>
+        <p class="article-excerpt">هاردباکس آن جعبه‌های لوکس و باکیفیتی هستند که محصولات شما را مثل الماس در خود نگه می‌دارند...</p>
+        <button class="read-more-btn" onclick="toggleFullText(this)">ادامه مطلب</button>
+      </div>
+      <div class="article-full-text">
+        <p>هاردباکس مانند بدل ستاره‌هاست: محکم، جذاب و فراموش‌نشدنی!</p>
+        <p><strong>هاردباکس چیست؟</strong> جعبه‌های مقوایی با ساختار بسیار محکم و ضخیم برای محصولات لوکس.</p>
+        <ul>
+          <li><strong>حفاظت فوق‌العاده:</strong> در برابر ضربه، فشار و رطوبت مقاوم است.</li>
+          <li><strong>احساس لوکس:</strong> باز کردن آن حس یک هدیه ارزشمند را می‌دهد.</li>
+          <li><strong>قابلیت چاپ عالی:</strong> سطح صاف و باکیفیت برای چاپ‌های با کیفیت.</li>
+          <li><strong>قابلیت سفارشی‌سازی:</strong> استفاده از مغناطیس، روبان، فوم مخصوص.</li>
+          <li><strong>مقاومت در برابر زمان:</strong> شکل خود را برای مدت طولانی حفظ می‌کند.</li>
+        </ul>
+        <p>اگر می‌خواهید محصولتان خاطره‌ای فراموش‌نشدنی ایجاد کند، هاردباکس انتخاب هوشمندانه‌ای است!</p>
+      </div>
+    </div>
+    
+    <!-- کارت سوم -->
+    <div class="article-card">
+      <img src="images/کاتالوگ، بروشور و کارت ویزیت مقاله.png" alt="کارت ویزیت و کاتالوگ" class="article-image">
+      <div class="article-content">
+        <h3 class="article-title">کارت ویزیت، کاتالوگ و بروشور</h3>
+        <p class="article-excerpt">در دنیای دیجیتال، هنوز هم ابزارهای چاپی قدرتمندترین سلاح‌های بازاریابی هستند...</p>
+        <button class="read-more-btn" onclick="toggleFullText(this)">ادامه مطلب</button>
+      </div>
+      <div class="article-full-text">
+        <p>فکر می‌کنید در عصر اینستاگرام، ابزارهای چاپی منسوخ شده‌اند؟ اشتباه می‌کنید!</p>
+        <p><strong>کارت ویزیت: سفیر کوچک شما</strong></p>
+        <ul>
+          <li><strong>اولین برخورد ماندگار:</strong> اولین چیزی که به مشتری بالقوه می‌دهید.</li>
+          <li><strong>خلاقیت بی‌نهایت:</strong> برش‌های غیرمعمول، مواد خاص، QR کد هوشمند.</li>
+        </ul>
+        <p><strong>بروشور: داستان‌گوی فشرده</strong></p>
+        <ul>
+          <li><strong>اطلاعات سازمان‌یافته:</strong> فضای کافی برای ارائه اطلاعات کلیدی.</li>
+          <li><strong>قالب‌های متنوع:</strong> دوسره، سه‌تا، زیگ‌زاگی یا دروازه‌ای.</li>
+        </ul>
+        <p><strong>کاتالوگ: دنیای کامل محصولات</strong></p>
+        <ul>
+          <li><strong>تجربه لمسی:</strong> ورق زدن آن وب‌سایتی جایگزین ندارد.</li>
+          <li><strong>عمر طولانی:</strong> یک کاتالوگ زیبا دور انداخته نمی‌شود.</li>
+        </ul>
+        <p>نکته نهایی: این سه ابزار وقتی با هم استفاده شوند، قدرتمندترین کمپین بازاریابی چاپی را تشکیل می‌دهند!</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function toggleFullText(button) {
+      const card = button.closest('.article-card');
+      const fullText = card.querySelector('.article-full-text');
+      
+      // بستن همه متن‌های باز دیگر
+      document.querySelectorAll('.article-full-text.show').forEach(text => {
+        if (text !== fullText) {
+          text.classList.remove('show');
+          const otherBtn = text.parentElement.querySelector('.read-more-btn');
+          if (otherBtn) otherBtn.textContent = 'ادامه مطلب';
+        }
+      });
+      
+      if (fullText.classList.contains('show')) {
+        fullText.classList.remove('show');
+        button.textContent = 'ادامه مطلب';
+      } else {
+        fullText.classList.add('show');
+        button.textContent = 'بستن متن';
+        // یه اسکرول نرم به کارت
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    }
+  </script>
+</div>
+
+  </div>
+</section>
+<!-- پایان بخش مقالات و آموزش -->
+ <!-- بخش معرفی خدمات -->
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="container" data-aos="fade-up" data-aos-duration="1200">
+    <h2 class="text-center mb-4" dir="rtl"> تماس با ما</h2>
+    <p class="text-center mb-5 " style="font-size: 16px;" dir="rtl">
+     
+ما دوست داریم از شما بشنویم. لطفاً برای هرگونه سوال یا درخواستی با ما تماس بگیرید.
+    </p> 
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <p>
+          <i class="fa-solid fa-envelope"></i> rangaelias@gmail.com
+        </p>
+        <p>
+          <i class="fa-solid fa-phone"></i> ۰۹۹۲-۱۰۰۹۷۵۷
+        </p>
+        <br>
+        <br>
+        <br>
+        <center>
+        <p dir="rtl">کارگاه:</p>
+        <p>
+          <i class="fa-solid fa-location-dot" style="font-family: Vazir;" dir="rtl">زیر پل ری، خیابان ادیب الممالک، گاراژ نارون، پلاک ۹ 📍 </i> 
+        </p>
+        <p dir="rtl">دفتر:</p>
+        <p>
+          <i class="fa-solid fa-location-dot" style="font-family: Vazir;" dir="rtl">خیابان جمهوری، خیابان ملت، برج تجاری اداری بهارستان 📍</i>
+        </p>
+        </center>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- نظرات -->
+
+  
+
+<div class="ranga-testimonials">
+  <h2 class="ranga-title">نظرات مشتریان رنگا</h2>
+  <div class="random-reviews" id="randomReviews"></div>
+  <button id="toggleBtn" class="ranga-btn">بیشتر</button>
+  <div class="all-reviews" id="allReviews" style="display:none;"></div>
+    <!-- فرم ثبت نظر -->
+  <form class="mt-4" style="max-width: 600px; margin: 0 auto;">
+    <div class="mb-3">
+      <textarea class="form-control" rows="3" placeholder="نظر خود را اینجا بنویسید..." dir="rtl"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary d-block mx-auto">ثبت نظر</button>
+  </form>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+    
+    .ranga-testimonials {
+      direction: rtl;
+      font-family: Vazir, Tahoma, sans-serif;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fffaf6;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(244, 106, 45, 0.1);
+    }
+    
+    .ranga-title {
+      text-align: center;
+      color: #ff6b35;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      position: relative;
+    }
+    .ranga-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to left, #ff9a3d, #ff6b35);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+    
+    .random-reviews {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .review-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid #ffe5d9;
+      flex: 1 1 250px;
+      max-width: 320px;
+      transition: all 0.3s;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(255, 107, 53, 0.15);
+      border-color: #ff9a3d;
+    }
+    
+    .stars {
+      color: #ffc107;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 3px;
+      direction: ltr;
+      display: inline-block;
+    }
+    .stars::before {
+      content: "★★★★★";
+      background: linear-gradient(90deg, #ffc107 var(--percent), #ddd var(--percent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .review-text {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 0.8rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    
+    .review-author {
+      font-weight: 500;
+      color: #ff6b35;
+      font-size: 0.9rem;
+      display: block;
+      text-align: left;
+    }
+    
+    .ranga-btn {
+      display: block;
+      margin: 2rem auto 0;
+      background: linear-gradient(135deg, #ff6b35, #ff9a3d);
+      color: white;
+      border: none;
+      padding: 0.8rem 2.5rem;
+      font-size: 1.1rem;
+      font-family: Vazir, sans-serif;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.25);
+    }
+    .ranga-btn:hover {
+      background: linear-gradient(135deg, #ff5722, #ff6b35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+    }
+    .ranga-btn:active {
+      transform: translateY(0);
+    }
+    
+    .all-reviews {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .random-reviews {
+        flex-direction: column;
+        align-items: center;
+      }
+      .review-card {
+        max-width: 100%;
+      }
+      .ranga-title {
+        font-size: 1.5rem;
+      }
+      .all-reviews {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <script>
+    // ====================== ۱۰۰ نظر کاملاً طبیعی ======================
+    const reviews = (function() {
+      const baseTexts = [
+        "چاپ و بسته بندی بی نظیر حرفه ای و با کیفیت",
+        "از بسته بندی شکیلش خیلی راضیم",
+        "تحویل به موقع و بسیار مرتب",
+        "کیفیت چاپ فوق العاده بود",
+        "بسته بندی دقیقا طبق سفارش و خواستم",
+        "طراحی جعبه ها خیلی شیک و خاص بود",
+        "قیمت مناسب در مقابل کیفیت عالی",
+        "تیم حرفه ای و خوش برخورد",
+        "بسته بندی هدیه ها محشر بودن",
+        "چاپ افستشون بی نقصه",
+        "بسته بندی مقاوم و زیبا",
+        "سرعت چاپ و تحویل شگفت انگیز",
+        "دیگه جایی بهتر از رنگا پیدا نکردم",
+        "واقعا حرفه ای هستید ممنون",
+        "جعبه های اختصاصی برام طراحی کردن و عالیه",
+        "چاپ لیبل و برچسب دقیق و با رنگ های زنده",
+        "بسته بندی ضد ضربه برای ارسال خیالم راحت شد",
+        "انگار میدونن مشتری چی میخواد",
+        "هر بار که سفارش میدم از قبلی بهتره",
+        "پشتیبانیشون عالیه همیشه آنلاین و پاسخگو",
+        "حتی یک اشتباه کوچیک هم نداشت",
+        "چاپ دیجیتال به همراه بسته بندی یه سرویس کامل",
+        "کارم رو توی زمان کم و با دقت بالا تحویل گرفتم",
+        "طراحیشون خلاقانه است پیشنهاد می کنم",
+        "بسته بندی طوری بود که محصول دست نخورده رسید",
+        "واقعا به کیفیت اهمیت می دن",
+        "بهترین تصمیم همکاری با رنگا بود",
+        "دیگه از این کیفیت توی هیچ شرکتی ندیدم",
+        "بسته بندی کادویی هدیه دادن رو لذت بخش کرد",
+        "چاپ روی جعبه با دقت بالا هم رنگ هم طرح عالی",
+        "مرسی که اینقدر خوش قول هستید",
+        "حس خوبیه وقتی بسته بندی اینقدر تمیز باشه",
+        "پیشنهاد میدم دوستام هم از رنگا استفاده کنن",
+        "از خرید و بسته بندیش کاملا راضیم",
+        "چاپ کاتالوگ و بروشور با کاغذ مرغوب",
+        "همه چی طبق برنامه پیش رفت عالی",
+        "بسته بندی با هولوگرامی که سفارش دادم فوق العاده شد",
+        "قیمت ها نسبت به کیفیت واقعا منصفانه ست",
+        "برای جشنوارهم بسته بندی خاصی خواستم ناامید نشدم",
+        "سفارش اینترنتی دادم همه چی راحت و سریع انجام شد",
+        "جعبه های لمینتی واقعا مرغوب و باکلاس بودن",
+        "از خدمات مشتری شون لذت بردم",
+        "رنگا یه برند قابل اعتماد توی چاپ و بسته بندیه",
+        "دقت در جزئیات بسته بندی حرف نداره",
+        "بسته بندی طبق استانداردهای روز خوشم اومد",
+        "برای محصولات ارگانیکم بسته بندی خاص طراحی کردن بی نظیر",
+        "چاپ با رنگ های کاملا طبیعی و شفاف",
+        "حتی چاپ یک عدد هم برام انجام دادن دستشون درد نکنه",
+        "بسته بندی مغناطیسی شون خیلی جذابه",
+        "تنوع بسته بندی خیلی بالاست انتخاب آزادی داری",
+        "از این به بعد فقط رنگا",
+        "رنگ ها دقیقا مثل چیزی که میخواستم دراومد",
+        "چاپ روی مقوای سنگین کیفیتش محسوس بود",
+        "برای کسب و کارم هویت بصری ساختن ممنون",
+        "تیم طراحی ایده های نو داشتن",
+        "بسته ها به موقع رسیدن و سالم بودن",
+        "کیفیت بسته بندی از عکس ها بهتر بود",
+        "سفارشم فوری بود اما کیفیت افت نکرد",
+        "حرفهای ترین مجموعه ای که دیدم",
+        "پیش فاکتور سریع و دقیق فرستادن",
+        "چاپ سیلک اسکرین روی جعبه عالی شد",
+        "کیفیت چاپ روی کارتن واقعا عالی بود",
+        "بسته بندی برای ارسال پستی کاملا امن بود",
+        "طراحی لوگو و چاپش بی نقص انجام شد",
+        "سرعت عملشون قابل تحسینه",
+        "برای استارتاپم کلی ایده گرفتم",
+        "چاپ روی پارچه هم انجام میدن عالین",
+        "کیفیت مواد اولیه محسوسه",
+        "تیم فروش خیلی راهنمایی کردن",
+        "بسته بندی اختصاصی برام ساختن دمتون گرم",
+        "حتی یه ایراد کوچیک هم نداشت",
+        "چاپ روی پلاستیک هم انجام دادن کیفیتش عالیه",
+        "برای مراسم عروسیم کلی کار چاپی گرفتم همشون عالی بودن",
+        "تحویل اکسپرس داشتن واقعا به درد بخور بود",
+        "طرحی که میخواستم دقیقا پیاده سازی کردن",
+        "رنگ مشکی واقعا مشکی بود نه خاکستری",
+        "چاپ روی سلفون هم انجام میدن",
+        "برای محصولات غذایی بسته بندی بهداشتی انجام دادن",
+        "تیم گرافیکشون واقعا حرفه ای کار میکنن",
+        "چاپ روی چرم هم تست کردم عالی بود",
+        "بسته بندی برای هدایای شرکتی خیلی لوکس شد",
+        "حتی توی تعطیلات هم پاسخگو بودن",
+        "چاپ روی فلز هم انجام میدن واقعا حرفه ای هستن",
+        "برای فروشگاه اینترنتیم کلی جعبه سفارش دادم همشون درست بودن",
+        "کیفیت چاپ افستشون واقعا فرق داره",
+        "بسته بندی ضد آب هم دارن عالیه",
+        "چاپ روی پاکت نامه هم انجام میدن",
+        "برای کتابم جلد چاپ کردن عالی شد",
+        "تیم کنترل کیفیتشون سخت گیرن که خوبه",
+        "چاپ روی شیشه هم انجام دادن",
+        "بسته بندی برای ارسال به خارج از کشورم عالی بود",
+        "حتی نمونه رایگان هم فرستادن برام",
+        "چاپ روی چوب هم انجام میدن کیفیتش عالیه",
+        "برای نمایشگاهم کلی استند چاپ کردن عالی بودن",
+        "کیفیت چاپ دیجیتالشونم عالیه",
+        "بسته بندی برای محصولات الکترونیکیم امن بود",
+        "چاپ روی سرامیک هم انجام میدن",
+        "تیم بسته بندیشون خیلی دقت میکنن",
+        "برای تولد پسرم کلی کارت چاپ کردن عالی بودن",
+        "چاپ روی پلی استر هم انجام میدن",
+        "بسته بندی برای عطرم خیلی شکیل شد",
+        "حتی ساعت ۱۰ شب هم پاسخگو بودن",
+        "چاپ روی کاغذ کرافت هم انجام میدن عالیه",
+        "برای شرکت نوپام کلی بروشور چاپ کردن عالی بودن"
+      ];
+      
+      const names = [
+        "مهدی", "mahdi", "سارا", "sara", "علی", "ali", "نازنین", "nazanin", 
+        "رضا", "reza", "پرنیا", "parnia", "حسین", "hossein", "یاسمن", "yasaman",
+        "کامران", "kamran", "نیما", "nima", "مریم", "maryam", "پوریا", "pouria",
+        "سینا", "sina", "نگین", "negin", "امیر", "amir", "لیلا", "leila",
+        "فرزاد", "farzad", "بهار", "bahar", "محمد", "mohammad", "النا", "elena",
+        "پارسا", "parsa", "سپیده", "sepideh", "امید", "omid", "ترانه", "taraneh",
+        "رها", "raha", "آرش", "arsh", "نادر", "nader", "مینا", "mina",
+        "کاوه", "kaveh", "هستی", "hasti", "سامان", "saman", "سحر", "sahar",
+        "فرهاد", "farhad", "لاله", "laleh", "پویا", "pouya", "شیدا", "shayda",
+        "بابک", "babak", "آوا", "ava", "ایمان", "iman", "روژا", "roja",
+        "نیلوفر", "niloofar", "کیوان", "kivan", "سپهر", "sepehr", "گلناز", "golnaz",
+        "فرشاد", "farshad", "مهسا", "mahsa", "حامد", "hamed", "نیکا", "nika",
+        "شایان", "shayan", "آتنا", "atena", "پیمان", "peyman", "هانیه", "haniye",
+        "آرمان", "arman", "مهتاب", "mahtab", "میلاد", "milad", "نسترن", "nastaran",
+        "سجاد", "sajad", "آیلین", "aylin", "فرزین", "farzin", "سوگند", "sogand",
+        "امیرحسین", "amirhossein", "ستایش", "setayesh", "پدرام", "pedram", "شبنم", "shabnam",
+        "کیان", "kian", "هلیا", "helia", "فرید", "farid", "آیدا", "ayda",
+        "سپنتا", "sepanta", "ملیکا", "melika", "آرمین", "armin", "سوگل", "soogol",
+        "ایلیا", "ilya", "آوا", "ava", "پرهام", "parham", "یگانه", "yeganeh"
+      ];
+      
+      // تعداد ستاره برای هر نظر (بین ۳ تا ۵)
+      function getRandomStars() {
+        return Math.floor(Math.random() * 3) + 3; // ۳، ۴ یا ۵
+      }
+      
+      const reviewsArray = [];
+      for (let i = 0; i < 100; i++) {
+        const nameIdx = i % names.length;
+        const textIdx = i % baseTexts.length;
+        
+        // ۷۰٪ نظرات بدون علامت نگارشی، ۳۰٪ با نقطه یا ویرگول
+        let finalText = baseTexts[textIdx];
+        if (Math.random() > 0.7) {
+          if (Math.random() > 0.5) finalText += ".";
+          else finalText += "، ممنون";
+        }
+        
+        // ستاره‌های رندوم
+        const stars = getRandomStars();
+        const percent = (stars / 5) * 100;
+        
+        reviewsArray.push({
+          name: names[nameIdx],
+          text: finalText,
+          stars: stars,
+          percent: percent
+        });
+      }
+      return reviewsArray;
+    })();
+
+    // ====================== انتخاب رندوم ۳ نظر ======================
+    function getRandomReviews(arr, count) {
+      const shuffled = [...arr];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled.slice(0, count);
+    }
+
+    // وقتی صفحه لود شد
+    document.addEventListener('DOMContentLoaded', function() {
+      const randomContainer = document.getElementById('randomReviews');
+      const allContainer = document.getElementById('allReviews');
+      const toggleBtn = document.getElementById('toggleBtn');
+
+      // تابع برای ایجاد HTML هر نظر
+      function createReviewHTML(review) {
+        return `
+          <div class="review-card">
+            <div class="stars" style="--percent: ${review.percent}%"></div>
+            <p class="review-text">${review.text}</p>
+            <span class="review-author">- ${review.name}</span>
+          </div>
+        `;
+      }
+
+      // نمایش ۳ نظر رندوم
+      function showRandomThree() {
+        const randomThree = getRandomReviews(reviews, 3);
+        randomContainer.innerHTML = randomThree.map(r => createReviewHTML(r)).join('');
+      }
+
+      // پر کردن ۱۰۰ نظر در بخش مخفی
+      function populateAllReviews() {
+        allContainer.innerHTML = reviews.map(r => createReviewHTML(r)).join('');
+      }
+
+      showRandomThree();
+      populateAllReviews();
+
+      // دکمه بیشتر / بستن
+      toggleBtn.addEventListener('click', function() {
+        const isAllVisible = allContainer.style.display !== 'none';
+        if (isAllVisible) {
+          allContainer.style.display = 'none';
+          randomContainer.style.display = 'flex';
+          showRandomThree(); // هر بار که می‌بندیم ۳ نظر جدید
+          toggleBtn.textContent = 'بیشتر';
+        } else {
+          randomContainer.style.display = 'none';
+          allContainer.style.display = 'grid';
+          toggleBtn.textContent = 'بستن';
+        }
+      });
+    });
+  </script>
+</div>
+
+  
+
+
+<footer class="footer bg-dark text-light pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <!-- آدرس و تماس -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase">راه‌های ارتباطی</h5>
+                <center>
+        <p dir="rtl">کارگاه:</p>
+        <p>
+          <i class="fa-solid fa-location-dot" style="font-family: Vazir;" dir="rtl">زیر پل ری، خیابان ادیب الممالک، گاراژ نارون، پلاک ۹ 📍 </i> 
+        </p>
+        <p dir="rtl">دفتر:</p>
+        <p>
+          <i class="fa-solid fa-location-dot" style="font-family: Vazir;" dir="rtl">خیابان جمهوری، خیابان ملت، برج تجاری اداری بهارستان 📍</i>
+        </p>
+        </center>
+        <p>📞 ۰۹۹۲-۱۰۰۹۷۵۷</p>
+       
+      </div>
+
+      <!-- شبکه اجتماعی -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase">دنبال‌مون کن</h5>
+        <p>
+          <a href="https://instagram.com/ranga" target="_blank" class="text-light text-decoration-none">
+            📷 اینستاگرام رنگا
+          </a>
+        </p>
+        <p>
+          <a href="#" class="text-light text-decoration-none">
+            🌐 سایت رسمی رنگا
+          </a>
+        </p>
+      </div>
+
+      <!-- نماد اعتماد -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase">نماد اعتماد</h5>
+        <img src="images/نماد-اعتماد-الکترونیکی.jpg" alt="نماد اعتماد" width="100">
+        <p class="mt-2">ما عضو رسمی کسب‌وکارهای دیجیتال هستیم ✔️</p>
+      </div>
+    </div>
+    <hr class="bg-light">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2020 ranga.ir | تمامی حقوق محفوظ است</p>
+    </div>
+    <div>تمامی این سایت توسط ایلیا رضایی طراحی شده و تمامی حقوق متعلق به رنگا است</div>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orange Power</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffa34e, #fffaf0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Glass Card */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 60px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* Title Animation */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    animation: slideDown 1.2s ease forwards;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeUp 2s ease forwards;
+}
+
+/* Button */
+button {
+    margin-top: 40px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff7b00;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+    font-size: 1rem;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+}
+
+/* Floating Circles */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 89, 0, 0.2);
+    animation: float 6s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+}
+
+.circle:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    bottom: -40px;
+    right: -40px;
+}
+@font-face {
+  font-family: 'Vazir';
+  src: url('fonts/Vazir.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="container">
+    <h1 style="font-family:  Vazir;"> برای دیدن رزومه و تاریخچه برند رنگا، کلیک کنید
+    </h1>
+    <p></p>
+    <button onclick="alert('به دنیای موفقیت خوش اومدی! 🚀')" style="font-family:  Vazir;">شروع کن</button>
+</div>
+
+</body>
+</html>

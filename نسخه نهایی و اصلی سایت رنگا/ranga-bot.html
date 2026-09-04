@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رنگــا | ربات پاسخگوی چاپ و بسته‌بندی</title>
+    <!-- فونت وزیر -->
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazir', 'IranSans', Tahoma, sans-serif;
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* کل صفحه */
+        .page-wrapper {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(255, 120, 0, 0.08), 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            max-height: 800px;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+        }
+
+        /* هدر */
+        .chat-header {
+            background: linear-gradient(135deg, #FF7A00 0%, #FF9D33 100%);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 120, 0, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bot-avatar {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .bot-info h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .bot-info span {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            display: block;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        /* محدوده چت */
+        .chat-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 16px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-area::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-area::-webkit-scrollbar-thumb {
+            background: #ffca99;
+            border-radius: 10px;
+        }
+
+        /* پیام‌ها */
+        .message {
+            display: flex;
+            animation: fadeInUp 0.35s ease;
+        }
+        .message.user {
+            justify-content: flex-end;
+        }
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .bubble {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.7;
+            font-size: 0.9rem;
+            position: relative;
+            word-wrap: break-word;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .message.user .bubble {
+            background: #f2f2f2;
+            color: #222;
+            border-bottom-left-radius: 6px;
+            margin-left: 10px;
+        }
+
+        .message.bot .bubble {
+            background: #FFF7F0;
+            color: #2d2d2d;
+            border-bottom-right-radius: 6px;
+            border: 1px solid #FFDDB5;
+            margin-right: 10px;
+        }
+
+        .message.bot .bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: 18px;
+            width: 12px;
+            height: 12px;
+            background: #FFF7F0;
+            border-left: 1px solid #FFDDB5;
+            border-bottom: 1px solid #FFDDB5;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* بخش سوالات (دکمه‌ها) */
+        .questions-area {
+            padding: 12px 16px 20px;
+            background: #ffffff;
+            border-top: 1px solid #ffe6cc;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-content: flex-start;
+            justify-content: center;
+            max-height: 210px;
+            overflow-y: auto;
+        }
+
+        .q-btn {
+            background: white;
+            color: #FF7A00;
+            border: 2px solid #FFB366;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Vazir', sans-serif;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(255, 120, 0, 0.05);
+        }
+
+        .q-btn:hover {
+            background: #FFF0E0;
+            border-color: #FF8C26;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(255, 120, 0, 0.15);
+        }
+
+        .q-btn:active {
+            background: #FF7A00;
+            color: white;
+            border-color: #FF7A00;
+            transform: scale(0.96);
+        }
+
+        /* فوتر کوچک */
+        .footer-note {
+            text-align: center;
+            font-size: 0.65rem;
+            color: #aaa;
+            padding: 4px 0 8px;
+            background: #ffffff;
+        }
+
+        /* واکنش‌گرایی */
+        @media (max-width: 480px) {
+            .page-wrapper {
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+                border: none;
+            }
+            .q-btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- هدر ربات -->
+        <div class="chat-header">
+            <div class="bot-avatar"><img src="images/ranga logo.png" alt="" style="width: 40px;"></div>
+            <div class="bot-info">
+                <h2>رنگــا</h2>
+                <span>دستیار هوشمند چاپ و بسته‌بندی</span>
+            </div>
+        </div>
+
+        <!-- ناحیه چت -->
+        <div class="chat-area" id="chatArea">
+            <!-- پیام خوش‌آمد گویی بات -->
+            <div class="message bot">
+                <div class="bubble">
+                    👋 سلام! من <strong>رنگا بات</strong> هستم، ربات پاسخگوی برند چاپ و بسته‌بندی رنگا.<br>
+                    لطفاً یکی از سوالات زیر را انتخاب کن تا کمکت کنم 😊
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه‌های سوالات -->
+        <div class="questions-area" id="questionsArea"></div>
+
+        <!-- فوتر -->
+        <div class="footer-note">
+            © 2020 | برند رنگا - چاپ و بسته‌بندی حرفه‌ای
+        </div>
+    </div>
+
+    <script>
+        // داده‌های سوالات و پاسخ‌ها
+        const questionsData = [
+            {
+                q: "بروشور چیست؟",
+                a: "📄 <strong>بروشور</strong> یک برگه تبلیغاتی چند صفحه‌ایست که معمولاً به‌صورت تا شده (دو لت، سه لت، کاتالوگی و ...) طراحی می‌شود. از بروشور برای معرفی محصولات، خدمات یا رویدادها استفاده می‌شود. <br><br>تیم <strong>رنگا</strong> با طراحی خلاقانه و چاپ با کیفیت، بروشورهای جذابی برای کسب‌وکار شما آماده می‌کند."
+            },
+            {
+                q: "کاتالوگ چیست؟",
+                a: "📘 <strong>کاتالوگ</strong> یک دفترچه یا کتابچه شامل اطلاعات کامل محصولات یا خدمات یک برند است. معمولاً با صحافی (مفتول، چسب گرم و ...) و کاغذهای با کیفیت تولید می‌شود. <br><br><strong>رنگا</strong> از طراحی گرافیکی تا چاپ نهایی کاتالوگ شما را به‌صورت حرفه‌ای انجام می‌دهد."
+            },
+            {
+                q: "هارد باکس چیست؟",
+                a: "🎁 <strong>هارد باکس</strong> یا جعبه سخت نوعی بسته‌بندی لوکس است که از مقوای بسیار ضخیم و روکش‌های با کیفیت (کتانی، چرم مصنوعی، مخمل و ...) ساخته می‌شود. این جعبه‌ها برای بسته‌بندی هدایای خاص، محصولات برند و کاربردهای VIP عالی هستند. <br><br><strong>رنگا</strong> هاردباکس‌های اختصاصی با طراحی منحصربه‌فرد شما را تولید می‌کند."
+            },
+            {
+                q: "انواع کاغذ چاپ",
+                a: "📃 در <strong>رنگا</strong> از انواع کاغذهای مرغوب استفاده می‌کنیم:<br> • <strong>گلاسه</strong> (براق و مات)<br> • <strong>تحریر</strong> (معمولی و لوکس)<br> • <strong>مقوا ایندربرد، پشت طوسی</strong><br> • <strong>کرافت و کتان</strong> برای بسته‌بندی<br>انتخاب کاغذ به پروژه شما بستگی دارد. برای مشاوره رایگان با ما تماس بگیرید."
+            },
+            {
+                q: "تفاوت چاپ افست و دیجیتال",
+                a: "🖨️ <strong>چاپ افست</strong>: مناسب تیراژ بالا (معمولاً بالای ۱۰۰۰ نسخه)، کیفیت رنگ فوق‌العاده، مقرون‌به‌صرفه.<br><br> <strong>چاپ دیجیتال</strong>: برای تیراژ پایین (حتی ۱ عدد)، سرعت بالا، مناسب کارهای فوری و نمونه‌سازی.<br><br><strong>رنگا</strong> هر دو نوع چاپ را با بهترین تجهیزات ارائه می‌دهد."
+            },
+            {
+                q: "مراحل طراحی تا چاپ",
+                a: "🔄 مراحل کار در <strong>رنگا</strong>:<br> ۱. دریافت سفارش و مشاوره<br> ۲. طراحی گرافیکی اولیه<br> ۳. تأیید طرح توسط مشتری<br> ۴. چاپ و بسته‌بندی<br> ۵. تحویل به‌موقع و دقیق<br><br>ما پروژه شما را از ایده تا محصول نهایی همراهی می‌کنیم."
+            },
+            {
+                q: "راه‌های ارتباطی",
+                a: "📞 <strong>راه‌های ارتباط با رنگا:</strong><br> 🏢 دفتر: تهران، خیابان جمهوری، خیابان ملت، برج اداری تجاری بهارستان<br> 🏭 کارگاه: تهران، میدان قیام، زیر پل ری، خیابان ادیب الممالک، گاراژ نارون، پلاک ۹ <br> ☎️ تلفن: ۰۹۹۲۱۰۰۹۷۵۷ <br> 📱 اینستاگرام: ranga.ir@ <br> 📧 ایمیل: eliasranga@gmail.com"
+            },
+            {
+                q: "زمان تحویل سفارش",
+                a: "⏱️ زمان تحویل بستگی به نوع کار دارد:<br> • <strong>چاپ دیجیتال:</strong> ۱ تا ۳ روز کاری<br> • <strong>چاپ افست:</strong> ۳ تا ۷ روز کاری<br> • <strong>بسته‌بندی خاص (هاردباکس):</strong> ۷ تا ۱۴ روز کاری<br><br>در پروژه‌های فوری با ما هماهنگ کنید."
+            },
+            {
+                q: "حداقل تیراژ چاپ",
+                a: "🔢 <strong>چاپ دیجیتال:</strong> از ۱ عدد هم امکان‌پذیر است.<br><strong>چاپ افست:</strong> معمولاً از ۱۰۰۰ عدد به بالا سفارش می‌گیریم. (برای تیراژهای کمتر هم راه حل داریم، تماس بگیرید)."
+            },
+            {
+                q: "آیا چاپ فوری دارید؟",
+                a: "⚡ بله! <strong>رنگا</strong> با دستگاه‌های چاپ دیجیتال پیشرفته، امکان چاپ فوری در کمترین زمان را برایتان فراهم می‌کند. کافیست طرح خود را ارسال کنید تا در اسرع وقت چاپ شود."
+            }
+        ];
+
+        // ارجاع به المان‌ها
+        const chatArea = document.getElementById('chatArea');
+        const questionsArea = document.getElementById('questionsArea');
+
+        // ساخت دکمه‌های سوالات
+        function renderQuestionButtons() {
+            questionsData.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'q-btn';
+                btn.textContent = item.q;
+                btn.addEventListener('click', () => handleQuestion(item, btn));
+                questionsArea.appendChild(btn);
+            });
+        }
+
+        // اسکرول به انتهای چت
+        function scrollToBottom() {
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        // افزودن پیام به چت
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${sender}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = text; // innerHTML برای پشتیبانی از تگ‌های HTML در پاسخ
+
+            msgDiv.appendChild(bubble);
+            chatArea.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        // مدیریت کلیک روی سوال
+        function handleQuestion(item, buttonElement) {
+            // پیام کاربر (سوال)
+            addMessage(item.q, 'user');
+            
+            // کمی مکث طبیعی و سپس پاسخ بات
+            setTimeout(() => {
+                addMessage(item.a, 'bot');
+            }, 350);
+        }
+
+        // اجرای اولیه
+        renderQuestionButtons();
+        // اسکرول اولیه به پایین (پیام خوش‌آمد)
+        scrollToBottom();
+    </script>
+
+</body>
+</html>

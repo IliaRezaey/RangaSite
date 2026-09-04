@@ -1,0 +1,490 @@
+/* Reset and base */
+/* فونت وزیری */
+@font-face {
+  font-family: 'Vazir';
+  src: url('fonts/Vazir.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #222;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+/* === کپسوله سازی استایل ها برای کامپوننت رنگا === */
+
+.ranga-component-wrapper {
+    /* این سطح به جلوگیری از تداخل با استایل های دیگر کمک می کند */
+    --ranga-primary-color: #ff6400; /* تعریف متغیر رنگی برای راحتی تغییر */
+    --ranga-bg-color: #ffffff;
+    --ranga-text-color: #2a2a2a;
+    
+    /* تنظیم جهت گیری و فونت برای کل کامپوننت */
+    direction: rtl; 
+    text-align: right;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+}
+
+/* کانتینر اصلی بخش محتوا */
+.ranga-component-wrapper .ranga-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--ranga-bg-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.ranga-content-wrapper {
+    display: flex;
+    gap: 50px; 
+    align-items: center;
+}
+
+/* ------------------- بخش تصاویر ------------------- */
+.ranga-image-side {
+    flex: 1; 
+    min-width: 45%;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.image-box {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* افکت شبیه سازی انیمیشن */
+.image-main {
+    box-shadow: 0 15px 40px rgba(255, 100, 0, 0.3); 
+    transform: scale(1.03); 
+}
+
+.image-main:hover {
+    transform: scale(1.05) rotate(1deg); 
+    box-shadow: 0 20px 50px rgba(255, 100, 0, 0.5);
+}
+
+.image-secondary {
+    position: absolute;
+    width: 40%; 
+    bottom: 0;
+    left: 10px; 
+    border: 4px solid var(--ranga-bg-color); /* استفاده از رنگ پس زمینه برای جداسازی */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------- بخش متن ------------------- */
+.ranga-text-side {
+    flex: 1;
+    min-width: 45%;
+}
+
+.ranga-title {
+    font-size: 3.5em;
+    font-weight: 900;
+    color: var(--ranga-text-color);
+    margin-bottom: 10px;
+    border-bottom: 5px solid var(--ranga-primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.ranga-subtitle {
+    font-size: 1.8em;
+    color: #555;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.ranga-body p {
+    font-size: 1.15em;
+    line-height: 2.2;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* دکمه فراخوان به عمل (CTA) */
+.ranga-cta {
+    display: inline-block;
+    background-color: var(--ranga-primary-color);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 20px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(255, 100, 0, 0.4);
+}
+
+.ranga-cta:hover {
+    background-color: #e65800;
+    transform: translateY(-2px);
+}
+
+/* برجسته سازی ویژگی متمایز کننده */
+.ranga-feature-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+    background-color: #fff0e6; 
+    border-radius: 8px;
+    border-right: 5px solid var(--ranga-primary-color);
+    margin-top: 25px;
+}
+
+.ranga-feature-highlight span {
+    font-size: 1.5em;
+    color: var(--ranga-primary-color);
+    flex-shrink: 0;
+}
+
+.ranga-feature-highlight p {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+
+/* ------------------- واکنش‌گرایی (Responsive Design) ------------------- */
+@media (max-width: 992px) {
+    .ranga-component-wrapper .ranga-section-container {
+        padding: 30px 15px;
+    }
+    .ranga-content-wrapper {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .ranga-text-side {
+        order: 1;
+    }
+
+    .ranga-image-side {
+        order: 2; 
+        min-width: 100%;
+        position: static; /* حذف موقعیت یابی مطلق برای تصاویر در موبایل */
+    }
+    
+    .image-secondary {
+        position: static;
+        width: 70%;
+        margin: 20px auto 0;
+    }
+
+    .ranga-title {
+        border-bottom: none;
+        display: block;
+        font-size: 2.5em;
+    }
+    
+    .ranga-subtitle {
+        font-size: 1.4em;
+    }
+
+    .ranga-cta {
+        width: 90%; 
+        box-sizing: border-box;
+        margin-top: 30px;
+    }
+    
+    .ranga-text-side {
+        text-align: center;
+    }
+    .ranga-body p {
+        text-align: justify; /* متن‌های پاراگرافی معمولاً در مرکز زیباتر هستند */
+    }
+}
+
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  transition: background 0.3s ease;
+}
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #222;
+  user-select: none;
+}
+.navbar-nav .nav-link {
+  padding: 1rem 1.2rem;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #e94e1b;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background-image: url("360_F_1013825572_SYT88juzJQhO7rVXjlGrJ1PN6ejMDhTD.jpg");
+  opacity: 0.5;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 15px;
+  position: relative;
+  overflow: hidden;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+}
+.btn-primary {
+  background-color: #e94e1b;
+  border: none;
+  padding: 12px 35px;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn-primary:hover {
+  background-color: #c63c14;
+  color: white;
+}
+
+/* Sections */
+section {
+  padding: 80px 0;
+}
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Services */
+.services .service-item {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: center;
+  cursor: default;
+}
+.services .service-item:hover {
+  transform: translateY(-15px);
+}
+.services .service-icon {
+  font-size: 48px;
+  color: #e94e1b;
+  margin-bottom: 20px;
+}
+.services h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+.services p {
+  font-weight: 400;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Portfolio */
+.portfolio {
+  background-color: #f9f9f9;
+}
+.portfolio h2 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #222;
+}
+.portfolio .portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.portfolio .portfolio-item:hover {
+  transform: scale(1.05);
+}
+.portfolio .portfolio-img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.5s ease;
+}
+.portfolio .portfolio-item:hover .portfolio-img {
+  transform: scale(1.1);
+}
+.portfolio .portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(233, 78, 27, 0.8);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+.portfolio .portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+.portfolio .portfolio-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+.portfolio .portfolio-category {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* Contact Section */
+#contact h2 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+#contact p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+  color: #555;
+  text-align: center;
+}
+#contact p i {
+  margin-right: 10px;
+  color: #e94e1b;
+}
+#contact .row > div p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 40px 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+}
+footer a {
+  color: #e94e1b;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .services .service-item {
+    padding: 25px 20px;
+  }
+  .portfolio h2 {
+    font-size: 2rem;
+  }
+  #contact h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .btn-primary {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}
+#articles h2 {
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#articles .card-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+#articles .card-text {
+  font-size: 0.95rem;
+}
+
+#articles .btn {
+  font-weight: 500;
+}
+
