@@ -799,3 +799,84 @@ footer a:hover {
     font-size: 0.9rem;
   }
 }
+/* =========================================================
+   Hero Banner - اصلاح دقیق برای تمام دستگاه‌ها
+========================================================= */
+
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  /* تصویر پس‌زمینه بدون هیچ لایه تیره */
+  background-image: url("360_F_1013825572_SYT88juzJQhO7rVXjlGrJ1PN6ejMDhTD.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  
+  padding: 100px 20px 60px;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-family: 'Vazir', 'Vazirmatn', Tahoma, sans-serif;
+  font-size: clamp(1.6rem, 5.5vw, 3.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.hero p {
+  font-family: 'Vazir', 'Vazirmatn', Tahoma, sans-serif;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-weight: 700;
+  color: #222222; /* رنگ تیره برای خوانایی روی بخش روشن */
+  background: rgba(255, 255, 255, 0.85); /* یک پس‌زمینه محو و شیک فقط زیر متن چاپ و تبلیغات */
+  padding: 6px 18px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0 auto 25px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.hero .btn-primary {
+  display: inline-block;
+  background-color: #ff6400;
+  color: #ffffff !important;
+  border: none;
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(255, 100, 0, 0.45);
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hero .btn-primary:hover {
+  background-color: #e65800;
+  transform: translateY(-2px);
+}
+
+/* اصلاح اختصاصی برای موبایل‌های باریک */
+@media (max-width: 576px) {
+  .hero {
+    min-height: 75vh;
+    padding: 90px 15px 40px;
+    background-size: cover;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+    line-height: 1.6;
+  }
+}
