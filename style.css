@@ -800,51 +800,51 @@ footer a:hover {
   }
 }
 /* =========================================================
-   Hero Banner - اصلاح دقیق برای تمام دستگاه‌ها
+   Hero Banner - نسخه بالاتر و فشرده‌تر
 ========================================================= */
 
 .hero {
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  min-height: 85vh;
+  min-height: 70vh; /* از 85vh یا 100vh کمتر شد تا محتوا بالاتر جمع بشه */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   
-  /* تصویر پس‌زمینه بدون هیچ لایه تیره */
   background-image: url("360_F_1013825572_SYT88juzJQhO7rVXjlGrJ1PN6ejMDhTD.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
   
-  padding: 100px 20px 60px;
+  /* پدینگ بالا رو از 100px به 60px کاهش دادیم تا بنر بچسبه بالاتر */
+  padding: 60px 20px 30px;
   overflow: hidden;
 }
 
 .hero h1 {
   font-family: 'Vazir', 'Vazirmatn', Tahoma, sans-serif;
-  font-size: clamp(1.6rem, 5.5vw, 3.2rem);
+  font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: 900;
   color: #ffffff;
-  margin: 0 0 15px 0;
-  line-height: 1.5;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .hero p {
   font-family: 'Vazir', 'Vazirmatn', Tahoma, sans-serif;
-  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 3vw, 1.2rem);
   font-weight: 700;
-  color: #222222; /* رنگ تیره برای خوانایی روی بخش روشن */
-  background: rgba(255, 255, 255, 0.85); /* یک پس‌زمینه محو و شیک فقط زیر متن چاپ و تبلیغات */
-  padding: 6px 18px;
+  color: #222222;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 5px 16px;
   border-radius: 20px;
   display: inline-block;
-  margin: 0 auto 25px auto;
+  margin: 0 auto 18px auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
@@ -853,8 +853,8 @@ footer a:hover {
   background-color: #ff6400;
   color: #ffffff !important;
   border: none;
-  padding: 12px 36px;
-  font-size: 1.1rem;
+  padding: 10px 32px;
+  font-size: 1rem;
   font-weight: 700;
   border-radius: 50px;
   box-shadow: 0 6px 20px rgba(255, 100, 0, 0.45);
@@ -867,16 +867,10 @@ footer a:hover {
   transform: translateY(-2px);
 }
 
-/* اصلاح اختصاصی برای موبایل‌های باریک */
+/* اصلاح اختصاصی برای موبایل */
 @media (max-width: 576px) {
   .hero {
-    min-height: 75vh;
-    padding: 90px 15px 40px;
-    background-size: cover;
-  }
-  
-  .hero h1 {
-    font-size: 1.75rem;
-    line-height: 1.6;
+    min-height: 65vh; /* کوتاه‌تر و شیک‌تر در موبایل */
+    padding: 55px 15px 25px; /* رفتن بالاتر */
   }
 }
